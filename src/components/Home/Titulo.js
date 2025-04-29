@@ -6,15 +6,19 @@ export default function Titulo() {
     return (
         <>
             <section className="hero is-fullheight-with-navbar">
-               
-                <div className="hero-background-container">
+                
+                <div className="hero-background is-overlay">
                     <img 
                         src={portada} 
                         alt="Portada" 
-                        className="hero-background-image"
+                        className="image is-fullwidth is-fullheight" 
+                        style={{
+                            objectFit: 'cover',
+                            objectPosition: 'center'
+                        }}
                     />
-                   
-                    <div className="hero-background-overlay"></div>
+                    
+                    <div className="is-overlay has-background-black has-opacity-40"></div>
                 </div>
                 
                 <div className="hero-head">
@@ -34,7 +38,10 @@ export default function Titulo() {
                                     <a className="navbar-item">Recetas</a>
                                     <a className="navbar-item">Sobre Nosotros</a>
                                     <span className="navbar-item">
-                                        <a className="button is-primary is-inverted">
+                                        <a className="button is-text">
+                                        <span className="icon">
+                                            <i className="fas fa-user"></i>  
+                                        </span>
                                             <span>Registrate</span> 
                                         </a>
                                     </span>
@@ -59,19 +66,10 @@ export default function Titulo() {
                     <nav className="tabs is-boxed is-fullwidth">
                         <div className="container">
                             <ul>
-                                <li>
-                                    <a>Res</a>
-                                </li>
-                                <li>
-                                    <a>Cerdo</a>
-                                </li>
-                                <li>
-                                    <a>Pollo</a>
-                                </li>
-                                <li>
-                                    <a>Pescado</a>
-                                </li>
-                                
+                                <li><a>Res</a></li>
+                                <li><a>Cerdo</a></li>
+                                <li><a>Pollo</a></li>
+                                <li><a>Pescado</a></li>
                             </ul>
                         </div>
                     </nav>
