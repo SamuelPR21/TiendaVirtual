@@ -2,7 +2,11 @@ import React, { useEffect, useRef } from 'react';
 import 'glider-js/glider.min.css';
 import '../Carrusel/Carrusel.css';
 import Glider from 'glider-js';
-import imagne from '../Titulo/Portada.jpeg';
+import res from '../Carrusel/res.jpeg'
+import cerdo from '../Carrusel/cerdo.jpeg';
+import pollo from '../Carrusel/pollo.jpeg';
+import pescado from '../Carrusel/pescado.jpeg';
+
 
 export default function Carrusel() {
   const gliderRef = useRef(null);
@@ -25,15 +29,15 @@ export default function Carrusel() {
       <div className="glider-container">
         <div className="glider" ref={gliderRef}>
           <div>
-            <img src={imagne} alt="Imagen 1" />
+            <img src={res} alt="Imagen 1" />
           </div>
           <div>
-            <img src={imagne} alt="Imagen 2" />
-           </div>
-          
-           <div>
-             <img src={imagne} alt="Imagen 3" />
+            <img src={cerdo} alt="Imagen 2" />
+          </div>
+          <div>
+             <img src={pescado} alt="Imagen 3" />
             </div>
+          
         </div>
         <button id="glider-prev" className="glider-prev">«</button>
         <button id="glider-next" className="glider-next">»</button>
