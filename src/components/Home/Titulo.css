@@ -22,7 +22,7 @@
     object-fit: cover;
 }
 
-/* Overlay para el efecto fade */
+/* Efecto fade */
 .hero-background-overlay {
     position: absolute;
     top: 0;
@@ -37,7 +37,7 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-/* Asegurar que el contenido esté sobre el fondo */
+/* Contenido esté sobre el fondo */
 .hero-head, .hero-body, .hero-foot {
     position: relative;
     z-index: 1;

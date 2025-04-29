@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "../Home/imagen1.png";
 import portada from "../Home/Portada.jpeg";
 import "../Home/Titulo.css";
 
@@ -7,14 +6,14 @@ export default function Titulo() {
     return (
         <>
             <section className="hero is-fullheight-with-navbar">
-                {/* Contenedor de fondo con clases de Bulma */}
+               
                 <div className="hero-background-container">
                     <img 
                         src={portada} 
                         alt="Portada" 
                         className="hero-background-image"
                     />
-                    {/* Overlay para el efecto fade */}
+                   
                     <div className="hero-background-overlay"></div>
                 </div>
                 
