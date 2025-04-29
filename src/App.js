@@ -1,10 +1,10 @@
 import 'bulma/css/bulma.min.css';
-import Titulo from './components/Home/Titulo';
+import Home from './components/Home/Home'
 
 function App() {
   return (
     <div className="App">
-      <Titulo />
+      <Home />
     </div>
   );
 }

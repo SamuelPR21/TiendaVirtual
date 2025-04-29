@@ -1,0 +1,31 @@
+.glider-container {
+  position: relative;
+  width: 80%;
+  margin: auto;
+}
+
+.glider img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.glider-prev, .glider-next {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  z-index: 10;
+  cursor: pointer;
+}
+
+.glider-prev {
+  left: -2rem;
+}
+
+.glider-next {
+  right: -2rem;
+}

@@ -1,6 +1,6 @@
 import React from "react";
-import portada from "../Home/Portada.jpeg";
-import "../Home/Titulo.css";
+import portada from "../Titulo/Portada.jpeg";
+import "../Titulo/Titulo.css";
 
 export default function Titulo() {
     return (
