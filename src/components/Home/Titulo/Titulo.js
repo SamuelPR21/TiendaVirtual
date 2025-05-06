@@ -1,8 +1,11 @@
 import React from "react";
 import portada from "../Titulo/Portada.jpeg";
 import "../Titulo/Titulo.css";
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Titulo() {
+    const navigate = useNavigate(); 
     return (
         <>
             <section className="hero is-fullheight-with-navbar">
@@ -33,7 +36,7 @@ export default function Titulo() {
                             </div>
                             <div id="navbarMenuHeroB" className="navbar-menu">
                                 <div className="navbar-end">
-                                    <a className="navbar-item">Inicio</a>
+                                    <a className="navbar-item" onClick={() => navigate('/')}>Inicio</a>
                                     <a className="navbar-item">Puntos de Venta</a>
                                     <a className="navbar-item">Recetas</a>
                                     <a className="navbar-item">Sobre Nosotros</a>
@@ -66,10 +69,10 @@ export default function Titulo() {
                     <nav className="tabs is-boxed is-fullwidth">
                         <div className="container">
                             <ul>
-                                <li><a>Res</a></li>
-                                <li><a>Cerdo</a></li>
-                                <li><a>Pollo</a></li>
-                                <li><a>Pescado</a></li>
+                                <li><a onClick={() => navigate('/productos/res')}>Res</a></li>
+                                <li><a onClick={() => navigate('/productos/cerdo')}>Cerdo</a></li>
+                                <li><a onClick={() => navigate('/productos/pollo')}>Pollo</a></li>
+                                <li><a onClick={() => navigate('/productos/pescado')}>Pescado</a></li>
                             </ul>
                         </div>
                     </nav>
