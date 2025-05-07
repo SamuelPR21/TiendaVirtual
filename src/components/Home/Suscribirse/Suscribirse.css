@@ -1,0 +1,12 @@
+.modal-card {
+    max-width: 500px;
+    width: 90%;
+  }
+  
+  .modal-card-body .field:not(:last-child) {
+    margin-bottom: 1.2rem;
+  }
+  
+  .buttons .button {
+    margin: 2px;
+  }

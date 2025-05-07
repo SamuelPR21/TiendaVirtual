@@ -1,8 +1,6 @@
 import React from 'react';
-import 'bulma/css/bulma.min.css';
 import { useParams } from 'react-router-dom';
 import Titulo from '../Home/Titulo/Titulo';
-import Footer from '../Home/Footer/Footer';
 import './Productos.css';
 
 const importarImagenes = (contexto) => {
@@ -90,7 +88,6 @@ export default function Productos() {
             </div>
         </div>
         </section>
-        <Footer /> {}
     </div>
   );
 }

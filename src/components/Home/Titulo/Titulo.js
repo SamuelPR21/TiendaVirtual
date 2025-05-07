@@ -1,13 +1,18 @@
-import React from "react";
+import React, {useState} from "react";
 import portada from "../Titulo/Portada.jpeg";
 import "../Titulo/Titulo.css";
 import { useNavigate } from 'react-router-dom';
+import Suscribirse from "../Suscribirse/Suscribirse";
 
 
-export default function Titulo() {
+export default function Titulo({onClick}) {
     const navigate = useNavigate(); 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     return (
         <>
+            {isModalOpen && <Suscribirse onClose={() => setIsModalOpen(false)} />}
+
             <section className="hero is-fullheight-with-navbar">
                 
                 <div className="hero-background is-overlay">
@@ -41,12 +46,14 @@ export default function Titulo() {
                                     <a className="navbar-item">Recetas</a>
                                     <a className="navbar-item">Sobre Nosotros</a>
                                     <span className="navbar-item">
-                                        <a className="button is-text">
+                                        <button className="button is-text"
+                                            onClick={() => setIsModalOpen(true)}
+                                        >
                                         <span className="icon">
                                             <i className="fas fa-user"></i>  
                                         </span>
                                             <span>Registrate</span> 
-                                        </a>
+                                        </button>
                                     </span>
                                 </div>
                             </div>

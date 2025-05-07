@@ -7,3 +7,27 @@
 .has-opacity-40 {
     opacity: 0.4;
 }
+
+/* Estilos para el modal */
+.modal-card {
+    max-width: 500px;
+    width: 90%;
+}
+
+.modal-card-body .field:not(:last-child) {
+    margin-bottom: 1.2rem;
+}
+
+.buttons .button {
+    margin: 2px;
+}
+
+/* Mejora de accesibilidad para botones */
+.button[aria-label="close"]:focus {
+    outline: 2px solid #3273dc;
+}
+
+/* Mejor contraste para texto */
+.has-text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}

@@ -1,33 +1,34 @@
 import React from "react";
 
 
-export default function Modal(){
+export default function Modal(props){
 
     return(
         <div className="card">
           <div className="card-image">
             <figure className="image is-4by3">
-              <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image"/>
+              <img src={props.imagen} alt="Imagen de Producto"/>
             </figure>
           </div>
           <div className="card-content">
             <div className="media">
                 <div className="media-left">
                     <figure className="image is-48x48">
-                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image"/>
                     </figure>
                 </div>
                 <div className="media-content">
-                    <p className="title is-4">John Smith</p>
-                    <p className="subtitle is-6">@johnsmith</p>
+                    <p className="title is-4">{props.titulo}</p>
+                    <p className="subtitle is-6">@CarcineriaCol</p>
                 </div>
             </div>
             <div className="content">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa.
-                <a>@bulma</a>. <a href="#">#css</a>
-                <a href="#">#responsive</a>
+                {props.descripcion}
                 <br/>
-                <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                    <div className="has-text-weight-bold mt-2 has-text-brown">Válido hasta: 
+                      <time>
+                        {props.validoHasta}
+                      </time>
+                    </div>
             </div>
           </div>
         </div>
