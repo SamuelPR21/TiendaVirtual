@@ -32,7 +32,7 @@ export default function Promociones() {
                         />
                         <Modal 
                             imagen={Bondolia} 
-                            titulo="Bondolia de Cerdo" 
+                            titulo="Bondiola de Cerdo" 
                             descripcion="Delicado sabor y perfecta para asar o estofar." 
                             validoHasta="Válido hasta el 12 de mayo"
                         />
