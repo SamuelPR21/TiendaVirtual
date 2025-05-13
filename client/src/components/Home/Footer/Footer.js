@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from '../Footer/logo.png'
 import "../Footer/Footer.css"
 
 export default function Footer() {
@@ -8,26 +9,11 @@ export default function Footer() {
                 <div className="columns is-mobile is-gapless">
                     <div className="column is-4">
                         <div className="has-text-centered">
-                            <h1 className="title is-5 has-text-white mb-3">Síguenos</h1>
-                            <div className="buttons is-centered are-small">
- 
-                                <a className="button is-white is-outlined is-rounded">
-                                    <span className="icon has-text-white">
-                                        <i className="fab fa-facebook-f"></i>
-                                    </span>
-                                </a>
-                                <a className="button is-white is-outlined is-rounded">
-                                    <span className="icon has-text-white">
-                                        <i className="fab fa-instagram"></i>
-                                    </span>
-                                </a>
-                                <a className="button is-white is-outlined is-rounded">
-                                    <span className="icon has-text-white">
-                                        <i className="fab fa-whatsapp"></i>
-                                    </span>
-                                </a>
-                            </div>
-                            <p className="has-text-white-ter is-size-7 mt-2">@CarniceriaCalidad</p>
+                            <h1 className="title is-5 has-text-white mb-3"></h1>
+                            <figure class="image is-128x128">
+                                <img class="is-rounded" src={logo} />
+                            </figure>
+                            
                         </div>
                     </div>
 
