@@ -4,6 +4,7 @@ import Carrusel from "../Home/Carrusel/Carrusel";
 import Promociones from "../Home/Promociones/Promociones";
 import Footer from "../Home/Footer/Footer"; 
 import FloatingCart from "../Home/Carrito/FloatingCart";
+import Despiece from "../Home/Despiece/Despiece";
 import './Home.css';
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
             <Titulo/>
             <Carrusel/>
             <Promociones/>
+            <Despiece/>
             <Footer/>
         </main>
     )
