@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import portada from "../Titulo/Portada.jpeg";
 import "../Titulo/Titulo.css";
 import { useNavigate } from 'react-router-dom';
@@ -9,8 +9,17 @@ export default function Titulo({onClick}) {
     const navigate = useNavigate(); 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
+   useEffect(() =>{
+        const hasSeenModal = sessionStorage.getItem('modalShown') 
+        if (!hasSeenModal) {
+            setIsModalOpen(true);
+            sessionStorage.setItem('modalShown', 'true');
+          }
+        
+    }, [])
+
     return (
-        <>
+        <>  
             {isModalOpen && <Suscribirse onClose={() => setIsModalOpen(false)} />}
 
             <section className="hero is-fullheight-with-navbar">
@@ -41,10 +50,10 @@ export default function Titulo({onClick}) {
                             </div>
                             <div id="navbarMenuHeroB" className="navbar-menu">
                                 <div className="navbar-end">
-                                    <a className="navbar-item" onClick={() => navigate('/')}>Inicio</a>
-                                    <a className="navbar-item">Puntos de Venta</a>
-                                    <a className="navbar-item">Recetas</a>
-                                    <a className="navbar-item">Sobre Nosotros</a>
+                                    <button className="navbar-item" onClick={() => navigate('/')}>Inicio</button>
+                                    <button className="navbar-item">Puntos de Venta</button>
+                                    <button className="navbar-item">Recetas</button>
+                                    <button className="navbar-item">Sobre Nosotros</button>
                                     <span className="navbar-item">
                                         <button className="button is-text"
                                             onClick={() => setIsModalOpen(true)}
@@ -75,11 +84,11 @@ export default function Titulo({onClick}) {
                 <div className="hero-foot">
                     <nav className="tabs is-boxed is-fullwidth">
                         <div className="container">
-                            <ul>
-                                <li><a onClick={() => navigate('/productos/res')}>Res</a></li>
-                                <li><a onClick={() => navigate('/productos/cerdo')}>Cerdo</a></li>
-                                <li><a onClick={() => navigate('/productos/pollo')}>Pollo</a></li>
-                                <li><a onClick={() => navigate('/productos/pescado')}>Pescado</a></li>
+                            <ul className="is-flex is-justify-content-center">
+                                <li><button onClick={() => navigate('/productos/res')}>Res</button></li>
+                                <li><button onClick={() => navigate('/productos/cerdo')}>Cerdo</button></li>
+                                <li><button onClick={() => navigate('/productos/pollo')}>Pollo</button></li>
+                                <li><button onClick={() => navigate('/productos/pescado')}>Pescado</button></li>
                             </ul>
                         </div>
                     </nav>

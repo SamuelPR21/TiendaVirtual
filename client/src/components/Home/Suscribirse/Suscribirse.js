@@ -11,10 +11,9 @@ export default function Suscribirse({ onClose }) {
     <div className="modal is-active">
       <div className="modal-background" onClick={onClose}></div>
 
-      <div className="modal-card">
+      <div className="modal-card">s
         <header className="modal-card-head">
-          <p className="modal-card-title">Suscribirse</p>
-          <button className="delete" aria-label="close" onClick={onClose}></button>
+          <h5 className="title is-4">Obten 30% de Descuento</h5>
         </header>
 
         <form onSubmit={handleSubmit}>

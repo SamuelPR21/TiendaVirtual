@@ -31,3 +31,23 @@
 .has-text-shadow {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
+
+/* Centrado de los tabs */
+.hero-foot ul {
+    display: flex;
+    justify-content: center;
+    gap: 18.0rem; /* Espacio entre elementos */
+    list-style: none; /* Elimina los bullets */
+    padding-left: 0; /* Elimina el padding por defecto */
+}
+
+
+.hero-foot button {
+    background: transparent;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    padding: 0.5em 1em;
+    font-size: 1rem;
+}
+
