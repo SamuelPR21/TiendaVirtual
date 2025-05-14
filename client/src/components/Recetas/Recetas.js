@@ -19,7 +19,7 @@ const imagenes = importarImagenes(require.context('./Imgrecetas', false, /\.(png
 const galeria = [
   imagenes['receta11'],
   imagenes['receta12'],
-  imagenes['|receta13'],
+  imagenes['receta13'],
   imagenes['receta14'],
   imagenes['receta15'],
   imagenes['receta1'],
@@ -29,23 +29,23 @@ const galeria = [
   imagenes['receta5'],
   imagenes['receta11'],
   imagenes['receta12'],
-  imagenes['|receta13'],
+  imagenes['receta13'],
   imagenes['receta14'],
   imagenes['receta15'],
 ];
 
 // Recetas
 const recetasTop = [
-  { titulo: 'Pizza Margarita', descripcion: 'Pizza con mozzarella y albahaca.', imagen: imagenes['receta1'] },
-  { titulo: 'Arepas Rellenas', descripcion: 'Plato tradicional colombiano.', imagen: imagenes['receta2'] },
-  { titulo: 'Tacos Mexicanos', descripcion: 'Tortilla con carne y vegetales.', imagen: imagenes['receta3'] },
-  { titulo: 'Sushi Variado', descripcion: 'Rollos japoneses con pescado.', imagen: imagenes['receta4'] },
-  { titulo: 'Lasaña', descripcion: 'Capas de pasta con carne y queso.', imagen: imagenes['receta5'] },
-  { titulo: 'Hamburguesa Clásica', descripcion: 'Carne, pan, lechuga y tomate.', imagen: imagenes['receta6'] },
-  { titulo: 'Ensalada César', descripcion: 'Ensalada fresca con pollo.', imagen: imagenes['receta7'] },
-  { titulo: 'Ceviche Peruano', descripcion: 'Pescado cocido en limón.', imagen: imagenes['receta8'] },
-  { titulo: 'Churros con Chocolate', descripcion: 'Postre frito con azúcar.', imagen: imagenes['receta9'] },
-  { titulo: 'Panqueques', descripcion: 'Dulces con miel o frutas.', imagen: imagenes['receta10'] },
+  { titulo: 'Carne Asada al estilo mexicano', descripcion: 'Jugosa carne de res marinada con limón, ajo y especias, asada a la parrilla para resaltar su sabor', imagen: imagenes['receta1'] },
+  { titulo: 'Estofado de Res', descripcion: 'Trozos de carne tierna cocidos lentamente con verduras, ideal para un almuerzo casero y reconfortante.', imagen: imagenes['receta2'] },
+  { titulo: 'Lasaña de Carne', descripcion: 'Capas de pasta, carne molida y salsa bechamel horneadas hasta dorar, un clásico de la cocina italiana.', imagen: imagenes['receta3'] },
+  { titulo: 'Tacos de Res al Pastor', descripcion: 'Carne de res marinada con achiote y piña, cocida al sartén y servida en tortillas para un toque callejero.', imagen: imagenes['receta4'] },
+  { titulo: 'Costillas BBQ al horno', descripcion: 'Costillas suaves y jugosas, bañadas en salsa barbacoa y horneadas hasta quedar caramelizadas.', imagen: imagenes['receta5'] },
+  { titulo: 'Cerdo en Salsa de Tamarindo', descripcion: 'Trozos de cerdo salteados y cubiertos con una salsa agridulce de tamarindo, ideal con arroz blanco.', imagen: imagenes['receta6'] },
+  { titulo: 'Chuletas de cerdo empanizadas', descripcion: 'Chuletas crujientes por fuera y jugosas por dentro, empanizadas y doradas en sartén.', imagen: imagenes['receta7'] },
+  { titulo: 'Arroz Frito con Cerdo (estilo oriental)', descripcion: 'Un salteado rápido de arroz con cerdo, huevo y vegetales al estilo asiático, perfecto como plato único.', imagen: imagenes['receta8'] },
+  { titulo: 'Ceviche de Pescado Blanco', descripcion: 'Pescado fresco "cocido" en jugo de limón, mezclado con cebolla, cilantro y ají para un sabor vibrante.', imagen: imagenes['receta9'] },
+  { titulo: 'Filete de Pescado Empanizado', descripcion: 'Filetes dorados y crujientes, ideales para acompañar con ensalada o papas.', imagen: imagenes['receta10'] },
 ];
 
 const RecetasPage = () => {
