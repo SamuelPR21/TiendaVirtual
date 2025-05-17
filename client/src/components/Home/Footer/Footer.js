@@ -9,9 +9,9 @@ export default function Footer() {
                 <div className="columns is-mobile is-gapless">
                     <div className="column is-4">
                         <div className="has-text-centered">
-                            <h1 className="title is-5 has-text-white mb-3"></h1>
+                            
                             <figure class="image is-128x128">
-                                <img class="is-rounded" src={logo} />
+                                <img class="is-rounded" src={logo} alt="Logo de Carnicería Calidad y Buen Precio"/>
                             </figure>
                             
                         </div>
