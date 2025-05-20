@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import 'bulma/css/bulma.min.css';
 import { useParams } from 'react-router-dom';
 import Titulo from '../Home/Titulo/Titulo';
+import NavbarProcutos from '../Navbar/NavbarProductos';
 import Footer from '../Home/Footer/Footer';
 import FloatingCart from "../Home/Carrito/FloatingCart";
 import { useCart } from '../../context/CartContext';
@@ -77,7 +78,7 @@ export default function Productos() {
   return (
     <div>
       <FloatingCart />
-      <Titulo />
+      <NavbarProcutos />
       <section className="section">
         <div className="container">
           <h1 className="title has-text-centered">{`Productos de ${categoria.charAt(0).toUpperCase() + categoria.slice(1)}`}</h1>

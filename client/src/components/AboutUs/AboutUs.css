@@ -1,0 +1,42 @@
+
+.hero-body-custom {
+    background-image: url('./Img/Portada.jpeg'); /* Ruta de la imagen */
+    background-size: cover; /* La imagen cubrirá todo el div */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    height: 100%; /* Asegúrate de que el div tenga altura */
+  }
+
+.aboutus-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+
+  
+  /* Espaciado interno del hero-body */
+  .hero-body-custom {
+    padding: 3rem 1.5rem !important;
+  }
+  
+  /* Espacio entre navbar y título */
+  .title-container {
+    margin-top: 40px;
+  }
+  
+  /* Sección de contenido principal */
+  .content-section {
+    flex: 1;
+  }
+  
+  /* Ajustes para el footer */
+  .footer-container {
+    margin-top: auto;
+    width: 100%;
+  }
+  
+  /* Espaciado adicional para el subtítulo */
+  .subtitle-spacing {
+    margin-top: 1rem !important;
+  }

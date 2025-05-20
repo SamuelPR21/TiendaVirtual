@@ -53,7 +53,7 @@ export default function Titulo({onClick}) {
                                     <button className="navbar-item" onClick={() => navigate('/')}>Inicio</button>
                                     <button className="navbar-item">Puntos de Venta</button>
                                     <button className="navbar-item">Recetas</button>
-                                    <button className="navbar-item">Sobre Nosotros</button>
+                                    <button className="navbar-item" onClick={() => navigate('/AboutUs')}>Sobre Nosotros</button>
                                     <span className="navbar-item">
                                         <button className="button is-text"
                                             onClick={() => setIsModalOpen(true)}

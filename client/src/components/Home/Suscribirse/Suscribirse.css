@@ -10,3 +10,8 @@
   .buttons .button {
     margin: 2px;
   }
+
+  /* Estilos para el título */
+.modal-card-head .title {
+  color: #fff !important;
+}
