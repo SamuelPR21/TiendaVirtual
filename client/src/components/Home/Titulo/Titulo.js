@@ -37,7 +37,7 @@ export default function Titulo() {
                             <div id="navbarMenuHeroB" className="navbar-menu">
                                 <div className="navbar-end">
                                     <a className="navbar-item" onClick={() => navigate('/')}>Inicio</a>
-                                    <a className="navbar-item">Puntos de Venta</a>
+                                    <a className="navbar-item"onClick={() => navigate('/PuntosVenta')}>Puntos de Venta</a>
                                     <a className="navbar-item">Recetas</a>
                                     <a className="navbar-item">Sobre Nosotros</a>
                                     <span className="navbar-item">
