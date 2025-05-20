@@ -52,7 +52,7 @@ export default function Titulo({onClick}) {
                                 <div className="navbar-end">
 
                                     <button className="navbar-item" onClick={() => navigate('/')}>Inicio</button>
-                                    <button className="navbar-item">Puntos de Venta</button>
+                                    <button className="navbar-item" onClick={() => navigate ('/PuntosVenta')}>Puntos de Venta</button>
                                     <button className="navbar-item"onClick={() => navigate('/recetas')}>Recetas</button>
                                     <button className="navbar-item" onClick={() => navigate('/AboutUs')}>Sobre Nosotros</button>
                                     <span className="navbar-item">

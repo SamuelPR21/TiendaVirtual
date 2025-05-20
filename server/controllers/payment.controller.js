@@ -1,5 +1,12 @@
 import { MercadoPagoConfig } from 'mercadopago';
 import { MERCADOPAGO_API_KEY } from '../config.js';
+import mercadopago from 'mercadopago';
+
+
+mercadopago.configure({
+  access_token: 'TEST-1158923823837048-043014-eb501089adbb88895f99946dd913fa46-466930734', // Reemplaza con tu token de acceso
+});
+
 
 const mercadopago = new MercadoPagoConfig({ accessToken: MERCADOPAGO_API_KEY });
 
