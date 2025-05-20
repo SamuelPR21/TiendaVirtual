@@ -20,6 +20,7 @@ function App() {
           <Route path="/productos/:categoria" element={<Productos />} />
           <Route path="/recetas" element={<Recetas />} />
           <Route path="/AboutUs" element={<AboutUs />} />
+          <Route path="/PuntosVenta" element={<PuntosVenta />} />
         </Routes>
       </div>
 

@@ -85,7 +85,7 @@ export default function NavbarGeneral() {
                             <button className="navbar-item" onClick={() => navigate('/recetas')}>
                                 Recetas
                             </button>
-                            <button className="navbar-item" onClick={() => navigate('/puntos-venta')}>
+                            <button className="navbar-item" onClick={() => navigate('/PuntosVenta')}>
                                 Puntos de Venta
                             </button>
                         </div>

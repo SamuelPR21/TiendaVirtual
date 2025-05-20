@@ -14,12 +14,12 @@ export default function Menu({ selectedOption, onSelect }) {
       <ul className="menu-list">
         {menuItems.map((item) => (
           <li key={item.key}>
-            <a 
+            <button
               className={selectedOption === item.key ? 'is-active' : ''}
               onClick={() => onSelect(item.key)}
             >
               {item.label}
-            </a>
+            </button>
           </li>
         ))}
       </ul>
