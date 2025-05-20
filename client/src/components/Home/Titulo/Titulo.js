@@ -50,14 +50,10 @@ export default function Titulo({onClick}) {
                             </div>
                             <div id="navbarMenuHeroB" className="navbar-menu">
                                 <div className="navbar-end">
-                                    <a className="navbar-item" onClick={() => navigate('/')}>Inicio</a>
-                                    <a className="navbar-item">Puntos de Venta</a>
-                                    <a className="navbar-item" onClick={() => navigate('/recetas')}>Recetas</a>
-                                    <a className="navbar-item">Sobre Nosotros</a>
 
                                     <button className="navbar-item" onClick={() => navigate('/')}>Inicio</button>
                                     <button className="navbar-item">Puntos de Venta</button>
-                                    <button className="navbar-item">Recetas</button>
+                                    <button className="navbar-item"onClick={() => navigate('/recetas')}>Recetas</button>
                                     <button className="navbar-item" onClick={() => navigate('/AboutUs')}>Sobre Nosotros</button>
                                     <span className="navbar-item">
                                         <button className="button is-text"

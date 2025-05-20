@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bulma/css/bulma.min.css';
-import Titulo from '../Home/Titulo/Titulo';
+import NavbarGeneral from '../Navbar/NavbarGeneral';
 import Footer from '../Home/Footer/Footer';
 import './Recetas.css';
 
@@ -15,7 +15,6 @@ const importarImagenes = (contexto) => {
 
 const imagenes = importarImagenes(require.context('./Imgrecetas', false, /\.(png|jpe?g|svg)$/));
 
-// Galería
 const galeria = [
   imagenes['receta11'],
   imagenes['receta12'],
@@ -51,9 +50,8 @@ const recetasTop = [
 const RecetasPage = () => {
   return (
     <div>
-      <Titulo />
+      <NavbarGeneral />
 
-      {/* Banner con imagen de fondo */}
       <section
         className="hero is-primary is-medium hero-banner"
         style={{
@@ -62,7 +60,6 @@ const RecetasPage = () => {
       >
       </section>
 
-      {/* Galería horizontal */}
       <section className="section">
         <h2 className="title is-4">Galería de imágenes</h2>
         <div className="horizontal-gallery">
@@ -76,7 +73,6 @@ const RecetasPage = () => {
         </div>
       </section>
 
-      {/* Top 10 Recetas con tarjetas que se voltean */}
       <section className="section">
         <h2 className="title is-4">Top 10 Recetas</h2>
         <div className="columns is-multiline">
@@ -85,7 +81,6 @@ const RecetasPage = () => {
 <div key={index} className="column is-4">
   <div className="flip-card">
     <div className="flip-card-inner">
-      {/* Lado frontal de la tarjeta */}
       <div className="flip-card-front">
         <figure className="image is-4by3">
           <img src={receta.imagen} alt={receta.titulo} />
@@ -93,7 +88,6 @@ const RecetasPage = () => {
         <p className="title is-5 has-text-centered">{receta.titulo}</p>
       </div>
 
-      {/* Lado posterior de la tarjeta */}
       <div className="flip-card-back">
         <div className="content">
           <p className="title is-6">{receta.titulo}</p>
