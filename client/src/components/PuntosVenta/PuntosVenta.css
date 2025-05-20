@@ -26,3 +26,28 @@
 .card:hover .card-image figure img {
   transform: scale(1.1);
 }
+ 
+.puntos-venta-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+}
+
+.footer {
+  margin-top: auto;
+}
+
+/* Agrega esto */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.puntos-venta-container {
+  flex: 1;  /* Ocupa el espacio restante */
+}

@@ -1,7 +1,6 @@
 import React from 'react';
 import './PuntosVenta.css';
-import 'bulma/css/bulma.min.css';
-import Titulo from '../Home/Titulo/Titulo';
+import NavbarGeneral from '../Navbar/NavbarGeneral';
 import Footer from '../Home/Footer/Footer';
 
 const importarImagenes = (contexto) => {
@@ -39,10 +38,12 @@ const puntos = [
 
 function PuntosVenta() {
   return (
-    <div>
-        <Titulo />
-    <section className="section">
-      <div className="container">
+    <div className="main-container">
+      <NavbarGeneral />
+    <section className="puntos-venta-container">
+      <div className="content">
+        <br />
+        <br />
         <h1 className="title has-text-centered">Nuestros Puntos de Venta</h1>
 
         <div className="columns is-multiline">
@@ -73,8 +74,8 @@ function PuntosVenta() {
         </div>
       </div>
     </section>
-    <Footer />
-</div>
+    <Footer className="footer" />
+    </div>
   );
 }
 
