@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import './PuntosVenta.css';
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import NavbarGeneral from '../Navbar/NavbarGeneral';
 import Footer from '../Home/Footer/Footer';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import './PuntosVenta.css';
+
 
 const importarImagenes = (contexto) => {
   const imagenes = {};
@@ -76,38 +77,19 @@ function PuntosVenta() {
   return (
     <div className="main-container">
       <NavbarGeneral />
-
-      <section className="puntos-venta-container">
-        <div className="content">
-          <h1 className="title has-text-centered">Nuestros Puntos de Venta</h1>
-
-          <LoadScript googleMapsApiKey="AIzaSyCV4XAfdYgw94lNJra617EP2VuY4fCIzZQ">
-            <GoogleMap
-              mapContainerStyle={mapContainerStyle}
-              center={defaultCenter}
-              zoom={6}
-              onLoad={onLoad}
-              options={{
-                mapTypeControl: false,
-                streetViewControl: false,
-              }}
-            >
-              {puntos.map((punto, index) => (
-                <Marker
-                  key={index}
-                  position={{ lat: punto.lat, lng: punto.lng }}
-                  title={punto.nombre}
-                />
-              ))}
-            </GoogleMap>
-          </LoadScript>
-
-          <br />
-
-          <div className="columns is-multiline">
+    <br/>
+    <br/>
+    <br/>
+      <section className="section">
+        <div className="container has-text-centered">
+              <h1 className="title has-text-white">Puntos de Venta</h1>
+              <h2 className="subtitle has-text-light">Encuentra nuestras sucursales cerca de ti</h2>
+        </div>
+        <div className="container">
+          <div className="columns is-multiline is-centered">
             {puntos.map((punto, index) => (
-              <div className="column is-one-third" key={index}>
-                <div className="card punto-card">
+              <div className="column is-4" key={index}>
+                <div className="card">
                   <div className="card-image">
                     <figure className="image is-4by3">
                       <img src={punto.imagen} alt={punto.nombre} />
@@ -115,14 +97,18 @@ function PuntosVenta() {
                   </div>
                   <div className="card-content">
                     <p className="title is-5">{punto.nombre}</p>
-                    <p><strong>Dirección:</strong> {punto.direccion}</p>
-                    <p><strong>Teléfono:</strong> {punto.telefono}</p>
+                    <div className="content">
+                      <p><strong>Dirección:</strong> {punto.direccion}</p>
+                      <p><strong>Teléfono:</strong> {punto.telefono}</p>
+                    </div>
                   </div>
                   <footer className="card-footer">
-                    <a href={`tel:${punto.telefono.replace(/\s/g, '')}`} className="card-footer-item button is-link is-light">
+                    <a href={`tel:${punto.telefono.replace(/\s/g, '')}`} 
+                       className="card-footer-item button is-link is-light">
                       Llamar
                     </a>
-                    <button onClick={() => handleVerEnMapa(punto.lat, punto.lng)} className="card-footer-item button is-info is-light">
+                    <button onClick={() => handleVerEnMapa(punto.lat, punto.lng)} 
+                            className="card-footer-item button is-info is-light">
                       Ver en mapa
                     </button>
                   </footer>
@@ -130,10 +116,35 @@ function PuntosVenta() {
               </div>
             ))}
           </div>
+
+          <div className="section pt-0">
+            <div className="box p-0">
+              <LoadScript googleMapsApiKey="AIzaSyCV4XAfdYgw94lNJra617EP2VuY4fCIzZQ">
+                <GoogleMap
+                  mapContainerStyle={mapContainerStyle}
+                  center={defaultCenter}
+                  zoom={6}
+                  onLoad={onLoad}
+                  options={{
+                    mapTypeControl: false,
+                    streetViewControl: false,
+                  }}
+                >
+                  {puntos.map((punto, index) => (
+                    <Marker
+                      key={index}
+                      position={{ lat: punto.lat, lng: punto.lng }}
+                      title={punto.nombre}
+                    />
+                  ))}
+                </GoogleMap>
+              </LoadScript>
+            </div>
+          </div>
         </div>
       </section>
 
-      <Footer className="footer" />
+      <Footer />
     </div>
   );
 }
