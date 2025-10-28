@@ -1,11 +1,17 @@
 import axios from "axios";
 import {API_USER} from  "../utils/constans"
 
-export const login = async (username, email) => {
+export const login = async (email, password) => {
     try {
         const response = await axios.post(`${API_USER}/login`, {
-        username,
         email,
+        password
+        },{
+            withCredentials: true,
+            headers: {
+              "Content-Type": "application/json"
+            }
+
         });
         
         console.log("Login", response.data);

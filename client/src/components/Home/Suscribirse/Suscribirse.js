@@ -32,7 +32,6 @@ export default function Suscribirse({onClose, onLoginSuccess}) {
       >
         <section className="modal-card-body p-0 slide-container">
           <div className={`slide-inner ${isRegister ? "show-register" : ""}`}>
-            {/* LOGIN */}
             <div className="slide-section has-text-centered p-6 login-section">
               <Login toggleForm={toggleForm} onLoginSucces={() => {
                 onLoginSuccess?.()
@@ -40,21 +39,18 @@ export default function Suscribirse({onClose, onLoginSuccess}) {
               }} />
             </div>
 
-            {/* Imagen derecha (login) */}
             <div className="slide-section image-section">
               <figure className="image is-4by3">
                 <img src={loginImg} alt="Login visual" />
               </figure>
             </div>
 
-            {/* Imagen izquierda (registro) */}
             <div className="slide-section image-section">
               <figure className="image is-4by3">
                 <img src={registerImg} alt="Register visual" />
               </figure>
             </div>
 
-            {/* REGISTER */}
             <div className="slide-section has-text-centered p-6 register-section">
               <Register toggleForm={toggleForm} />
             </div>

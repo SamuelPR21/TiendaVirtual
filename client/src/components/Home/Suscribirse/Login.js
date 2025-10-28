@@ -1,17 +1,31 @@
 import React from "react";
 import { useState } from "react";
+import {login} from "../../../API/user"
 
 export default function Login({ toggleForm, onLoginSucces }) {
- 
+  
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [mensaje, setMensaje] = useState("");
-  const handleLoginMessage = () => {
-    setMensaje("✅ Inicio Sesion Exitoso");
-    setTimeout(() => setMensaje(""), 3000);
-  };
+  const [loading, setLoading] = useState(false);
+  
+  const handleLogin = async () => {
+    try {
+      setLoading(true);
+      const response = await login(email, password);
+      console.log("Login exitoso:", response);
 
-  const handleLogin = () => {
-    onLoginSucces();
-  }
+      setMensaje("✅ Inicio de sesión exitoso. ¡Bienvenido!");
+      onLoginSucces(); 
+      setTimeout(() => setMensaje(""), 3000);
+    } catch (error) {
+      console.error("Error en el login:", error);
+      setMensaje("❌ Error en las credenciales o en el servidor");
+      setTimeout(() => setMensaje(""), 3000);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
@@ -19,26 +33,51 @@ export default function Login({ toggleForm, onLoginSucces }) {
 
       <div className="field">
         <div className="control">
-          <input className="input" type="email" placeholder="Correo electrónico" />
+          <input 
+            className="input" 
+            type="email" 
+            placeholder="Correo electrónico"
+            value={email}
+            onChange={
+              (e) => setEmail(e.target.value)
+            }
+          />
         </div>
       </div>
 
       <div className="field">
         <div className="control">
-          <input className="input" type="password" placeholder="Contraseña" />
+          <input 
+            className="input" 
+            type="password"
+            placeholder="Contraseña" 
+            value={password} 
+            onChange={
+              (e) => setPassword(e.target.value)
+              }
+          />
         </div>
       </div>
 
-      <button className="button is-link is-fullwidth mb-3" onClick={() => { handleLogin(); handleLoginMessage(); }}>Entrar</button>
+      <button
+        className={`button is-link is-fullwidth mb-3 ${loading ? "is-loading" : ""}`}
+        onClick={handleLogin}
+      >
+        Entrar
+      </button>
+
       {mensaje && (
-        <div className="notification is-success is-light p-3 mt-2">
+        <div className={`notification ${mensaje.includes("✅") ? "is-success" : "is-danger"} is-light p-3 mt-2`}>
           {mensaje}
         </div>
       )}
-      
+
       <p>
         ¿No tienes cuenta?{" "}
-        <button onClick={toggleForm} style={{ cursor: "pointer", color: "blue"  }}>
+        <button
+          onClick={toggleForm}
+          style={{ cursor: "pointer", color: "blue", background: "none", border: "none" }}
+        >
           Regístrate
         </button>
       </p>
