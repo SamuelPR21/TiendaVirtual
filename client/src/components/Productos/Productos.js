@@ -134,14 +134,14 @@ export default function Productos() {
               <p><strong>Precio:</strong> ${productoSeleccionado.precio} /Kg</p>
               <p><strong>Descripción:</strong> {productoSeleccionado.descripcion}</p>
                       <button
-          className="button is-primary is-fullwidth mt-3"
-          onClick={() => {
-            addToCart(productoSeleccionado);
-            cerrarModal();
-          }}
-        >
-          Agregar al carrito
-        </button>
+                        className="button is-primary is-fullwidth mt-3"
+                        onClick={() => {
+                          addToCart(productoSeleccionado);
+                          cerrarModal();
+                        }}
+                      >
+                        Agregar al carrito
+                      </button>
             </section>
             
           </div>

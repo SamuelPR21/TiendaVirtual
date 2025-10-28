@@ -8,6 +8,7 @@ import Suscribirse from "../Suscribirse/Suscribirse";
 export default function Titulo({onClick}) {
     const navigate = useNavigate(); 
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [loginMessage, setLoginMessage] = useState("");
 
    useEffect(() =>{
         const hasSeenModal = sessionStorage.getItem('modalShown') 
@@ -20,7 +21,27 @@ export default function Titulo({onClick}) {
 
     return (
         <>  
-            {isModalOpen && <Suscribirse onClose={() => setIsModalOpen(false)} />}
+            {isModalOpen && 
+            <Suscribirse 
+                onClose={() => setIsModalOpen(false)}
+                onLoginSucces={() => {
+                    setLoginMessage("✅ Bienvenido a Carniceria ");
+                    setIsModalOpen(false);
+                    setTimeout(() => setLoginMessage(""), 3000);
+                }}
+            
+            />}
+
+            {loginMessage && (
+                <div className="notification is-success is-light p-3 mt-2" style={{
+                    position: 'fixed',
+                    top: '20px',
+                    right: '20px',
+                    zIndex: 1000,
+                }}>
+                    {loginMessage}
+                </div>
+            )}
 
             <section className="hero is-fullheight-with-navbar">
                 

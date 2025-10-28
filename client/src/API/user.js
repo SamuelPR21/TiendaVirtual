@@ -33,3 +33,24 @@ export const profile =  async() => {
     }
 }
 
+export const register = async (userData) => {
+    try {
+      const response = await axios.post(
+        `${API_USER}/register`,
+        userData,
+        {
+          withCredentials: true, 
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+  
+      console.log("✅ Register:", response.data);
+      return response.data;
+    } catch (error) {
+      console.error("❌ Error durante el register:", error.response || error);
+      throw error.response || error;
+    }
+  };
+

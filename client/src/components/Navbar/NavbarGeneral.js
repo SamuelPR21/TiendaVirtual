@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Suscribirse from "../Home/Suscribirse/Suscribirse";
-import FloatingCart from "../Home/Carrito/FloatingCart";
+//import FloatingCart from "../Home/Carrito/FloatingCart";
 import "./NavbarGeneral.css"; 
 
 export default function NavbarGeneral() {
@@ -21,7 +21,7 @@ export default function NavbarGeneral() {
 
     return (
         <>
-            {isModalOpen && <Suscribirse onClose={() => setIsModalOpen(false)} />}
+            {isModalOpen && <Suscribirse onClose={() => setIsModalOpen(true)} />}
 
             <nav className="navbar is-fixed-top is-transparent" role="navigation" aria-label="main navigation">
                 <div className="container">
@@ -31,7 +31,7 @@ export default function NavbarGeneral() {
                             <span className="logo-text">Carnicería</span>
                         </a>
                         
-                        <FloatingCart />
+                        {/* <FloatingCart /> */}
 
                         <button 
                             className={`navbar-burger ${isActive ? 'is-active' : ''}`}
