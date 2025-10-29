@@ -1,52 +1,48 @@
 .navbar {
     background: linear-gradient(45deg, #8b0000, #a52a2a) !important;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-}
-
-.navbar-item, 
-.navbar-link {
-    color: #ffffff !important;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.navbar-item:hover,
-.navbar-link:hover {
-    color: #000000 !important;
-    background-color: transparent !important;
-}
-
-.navbar-dropdown {
-    background-color: #8b0000 !important;
-    border: none !important;
-}
-
-.navbar-dropdown .navbar-item {
-    color: #ffffff !important;
-}
-
-.navbar-dropdown .navbar-item:hover {
-    background-color: #a52a2a !important;
-}
-
-.logo-text {
-    font-family: 'Arial Black', sans-serif;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  }
+  
+  .logo-text {
+    font-weight: 700;
     font-size: 1.5rem;
-    color: #ffffff;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-}
-
-.navbar-burger {
-    color: #ffffff;
-}
-
-body {
+    color: #fff;
+    letter-spacing: 0.5px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .logo-text:hover {
+    transform: scale(1.05);
+  }
+  
+  /* 🔥 Botón de logout flotante */
+  .logout-floating {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 9999;
+    border-radius: 50%;
+    width: 2.8rem;
+    height: 2.8rem;
     display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-}
-
-main {
-    flex: 1;
-}
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .logout-floating:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Responsive tweaks */
+  @media (max-width: 768px) {
+    .logout-floating {
+      top: 0.8rem;
+      left: 0.8rem;
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }

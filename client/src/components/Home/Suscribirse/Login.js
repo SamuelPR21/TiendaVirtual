@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import {login} from "../../../API/user"
+import { useUser } from "../../../context/UserContext";
 
 export default function Login({ toggleForm, onLoginSucces }) {
   
@@ -8,6 +9,7 @@ export default function Login({ toggleForm, onLoginSucces }) {
   const [password, setPassword] = useState("");
   const [mensaje, setMensaje] = useState("");
   const [loading, setLoading] = useState(false);
+  const { setUser } = useUser();
   
   const handleLogin = async () => {
     try {
@@ -15,9 +17,13 @@ export default function Login({ toggleForm, onLoginSucces }) {
       const response = await login(email, password);
       console.log("Login exitoso:", response);
 
+      const data =(response.data || response)
+      setUser(data);
+
       setMensaje("✅ Inicio de sesión exitoso. ¡Bienvenido!");
-      onLoginSucces(); 
-      setTimeout(() => setMensaje(""), 3000);
+      setTimeout(() => {
+        onLoginSucces();
+      });
     } catch (error) {
       console.error("Error en el login:", error);
       setMensaje("❌ Error en las credenciales o en el servidor");

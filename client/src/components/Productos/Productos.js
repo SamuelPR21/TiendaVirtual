@@ -3,7 +3,6 @@ import 'bulma/css/bulma.min.css';
 import { useParams } from 'react-router-dom';
 import NavbarGeneral from '../Navbar/NavbarGeneral';
 import Footer from '../Home/Footer/Footer';
-import { useCart } from '../../context/CartContext';
 import './Productos.css';
 
 const importarImagenes = (contexto) => {
@@ -57,7 +56,6 @@ const productos = {
 
 export default function Productos() {
   const { categoria } = useParams();
-  const { addToCart } = useCart();
   const productosCategoria = productos[categoria] || [];
 
   const [productoSeleccionado, setProductoSeleccionado] = useState(null);
@@ -107,7 +105,6 @@ export default function Productos() {
                     <p className="subtitle is-6">$ {producto.precio} /Kg</p>
                     <button
                       className="button is-primary"
-                      onClick={() => addToCart(producto)}
                     >
                       Añadir al carrito
                     </button>
@@ -136,7 +133,6 @@ export default function Productos() {
                       <button
                         className="button is-primary is-fullwidth mt-3"
                         onClick={() => {
-                          addToCart(productoSeleccionado);
                           cerrarModal();
                         }}
                       >
