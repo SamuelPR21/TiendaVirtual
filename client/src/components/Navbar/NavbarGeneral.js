@@ -1,14 +1,12 @@
-// src/components/Navbar/NavbarGeneral.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../context/UserContext";
 import LogoutButton from "./LogoutButton";
 import "./NavbarGeneral.css";
 
-export default function NavbarGeneral() {
+export default function NavbarGeneral({onOpenLogin}) {
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const { user, loading } = useUser();
 
   if (loading) return null;
@@ -65,7 +63,7 @@ export default function NavbarGeneral() {
                 <div className="buttons">
                   <button
                     className="button is-primary is-outlined"
-                    onClick={() => setIsModalOpen(true)}
+                    onClick={onOpenLogin}
                   >
                     <span className="icon">
                       <i className="fas fa-user"></i>

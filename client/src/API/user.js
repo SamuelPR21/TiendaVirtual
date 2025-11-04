@@ -60,20 +60,15 @@ export const register = async (userData) => {
     }
   };
 
-export const logout = async (id) => {
+export const logout = async () => {
   try{
-    const response = await axios.delete(
-      `${API_USER}/logout/${id}`,
-      {},
-      {
+    const response = await axios.delete(`${API_USER}/logout`,{
         withCredentials: true,
-      }
-    
-    );
+      });
 
     console.log("Logout", response.data);
-
     return response.data;
+    
   }catch (error){
     console.error ("Error during logout:", error);
     throw error;

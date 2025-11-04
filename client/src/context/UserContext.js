@@ -26,17 +26,14 @@ export function UserProvider({ children }) {
 
     const handleLogout = async () => {
         try {
-            if(!user?._id){
-                console.warn("No user is currently logged in.");
-                return;
-            }
-            await logout(user.id);
-            setUser (null);
-            console.log("User logged out successfully.");
+          await logout(); 
+          setUser(null);
+          console.log("User logged out successfully.");
         } catch (error) {
-            console.error("Error during logout:", error);
+          console.error("Error during logout:", error);
         }
-    };
+      };
+      
 
     return (
         <UserContext.Provider value={{ user, setUser, loading, handleLogout }}>

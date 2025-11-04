@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../context/UserContext";
-import "bulma/css/bulma.min.css";
+import "./logout.css"; 
 
 export default function LogoutButton() {
   const { handleLogout } = useUser();
@@ -18,11 +18,11 @@ export default function LogoutButton() {
 
   return (
     <button
-      className="button is-danger is-light logout-floating"
+      className="button is-danger is-light logout-button"
       onClick={handleClick}
       title="Cerrar sesión"
     >
-      <span className="icon">
+      <span className="icon is-small">
         <i className="fas fa-sign-out-alt"></i>
       </span>
       <span>Salir</span>
