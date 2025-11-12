@@ -9,6 +9,9 @@ import Productos from './components/Productos/Productos';
 import PuntosVenta from './components/PuntosVenta/PuntosVenta';
 import Recetas from './components/Recetas/Recetas';
 import AboutUs from './components/AboutUs/AboutUs';
+import AdminRoute from './routes/AdminRoute'; 
+import AgregarProducto from './components/Admin/AgregarProducto';
+import AgregarReceta from './components/Admin/AgregarReceta';
 import './App.css';
 
 function App() {
@@ -28,6 +31,22 @@ function App() {
           <Route path="/recetas" element={<Recetas />} />
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/PuntosVenta" element={<PuntosVenta />} />
+           <Route
+            path="/admin/agregar-producto"
+            element={
+              <AdminRoute>
+                <AgregarProducto />
+              </AdminRoute>
+            }
+          />
+          <Route
+            path="/admin/agregar-receta"
+            element={
+              <AdminRoute>
+                <AgregarReceta />
+              </AdminRoute>
+            }
+          />
         </Routes>
       </div>
     </Router>
@@ -35,3 +54,4 @@ function App() {
 }
 
 export default App;
+

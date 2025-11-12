@@ -1,29 +1,29 @@
-import React from "react";
-import { useState } from "react";
-import {login} from "../../../API/user"
+import React, { useState } from "react";
+import { login } from "../../../API/user";
 import { useUser } from "../../../context/UserContext";
 
 export default function Login({ toggleForm, onLoginSucces }) {
-  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [mensaje, setMensaje] = useState("");
   const [loading, setLoading] = useState(false);
-  const { setUser } = useUser();
-  
+
+  const { refreshProfile } = useUser();
+
   const handleLogin = async () => {
     try {
       setLoading(true);
       const response = await login(email, password);
       console.log("Login exitoso:", response);
 
-      const data =(response.data || response)
-      setUser(data);
+      // Refresca el perfil para obtener datos actualizados (rol incluido)
+      const data = await refreshProfile();
+      console.log("Perfil actualizado:", data);
 
       setMensaje("✅ Inicio de sesión exitoso. ¡Bienvenido!");
       setTimeout(() => {
-        onLoginSucces();
-      });
+        onLoginSucces?.(); // cierra modal
+      }, 1000);
     } catch (error) {
       console.error("Error en el login:", error);
       setMensaje("❌ Error en las credenciales o en el servidor");
@@ -39,41 +39,43 @@ export default function Login({ toggleForm, onLoginSucces }) {
 
       <div className="field">
         <div className="control">
-          <input 
-            className="input" 
-            type="email" 
+          <input
+            className="input"
+            type="email"
             placeholder="Correo electrónico"
             value={email}
-            onChange={
-              (e) => setEmail(e.target.value)
-            }
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
       </div>
 
       <div className="field">
         <div className="control">
-          <input 
-            className="input" 
+          <input
+            className="input"
             type="password"
-            placeholder="Contraseña" 
-            value={password} 
-            onChange={
-              (e) => setPassword(e.target.value)
-              }
+            placeholder="Contraseña"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
       </div>
 
       <button
-        className={`button is-link is-fullwidth mb-3 ${loading ? "is-loading" : ""}`}
+        className={`button is-link is-fullwidth mb-3 ${
+          loading ? "is-loading" : ""
+        }`}
         onClick={handleLogin}
       >
         Entrar
       </button>
 
       {mensaje && (
-        <div className={`notification ${mensaje.includes("✅") ? "is-success" : "is-danger"} is-light p-3 mt-2`}>
+        <div
+          className={`notification ${
+            mensaje.includes("✅") ? "is-success" : "is-danger"
+          } is-light p-3 mt-2`}
+        >
           {mensaje}
         </div>
       )}
@@ -82,7 +84,12 @@ export default function Login({ toggleForm, onLoginSucces }) {
         ¿No tienes cuenta?{" "}
         <button
           onClick={toggleForm}
-          style={{ cursor: "pointer", color: "blue", background: "none", border: "none" }}
+          style={{
+            cursor: "pointer",
+            color: "blue",
+            background: "none",
+            border: "none",
+          }}
         >
           Regístrate
         </button>

@@ -24,3 +24,13 @@ export const fetchProductById = async (id) => {
   const { data } = await axios.get(`${API_PRODUCTS}/${id}`);
   return data; 
 };
+
+// Crear producto (requiere admin autenticado)
+export const createProduct = async (payload) => {
+  // payload: { name, price_lb, description, stock, animal, image_url? }
+  const { data } = await axios.post(API_PRODUCTS, payload, {
+    withCredentials: true,
+    headers: { "Content-Type": "application/json" },
+  });
+  return data;
+};

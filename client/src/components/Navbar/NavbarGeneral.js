@@ -4,7 +4,7 @@ import { useUser } from "../../context/UserContext";
 import LogoutButton from "./LogoutButton";
 import "./NavbarGeneral.css";
 
-export default function NavbarGeneral({onOpenLogin}) {
+export default function NavbarGeneral({ onOpenLogin }) {
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState(false);
   const { user, loading } = useUser();
@@ -55,6 +55,27 @@ export default function NavbarGeneral({onOpenLogin}) {
             <button className="navbar-item" onClick={() => navigate("/PuntosVenta")}>
               Puntos de Venta
             </button>
+
+            {/* Enlaces solo para ADMIN */}
+            {user?.role === "admin" && (
+              <div className="navbar-item has-dropdown is-hoverable">
+                <button className="navbar-link">Administración</button>
+                <div className="navbar-dropdown">
+                  <button
+                    className="navbar-item"
+                    onClick={() => navigate("/admin/agregar-producto")}
+                  >
+                    Agregar Producto
+                  </button>
+                  <button
+                    className="navbar-item"
+                    onClick={() => navigate("/admin/agregar-receta")}
+                  >
+                    Agregar Receta
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="navbar-end">
@@ -73,7 +94,7 @@ export default function NavbarGeneral({onOpenLogin}) {
                 </div>
               </div>
             ) : (
-              <LogoutButton /> 
+              <LogoutButton />
             )}
           </div>
         </div>
@@ -81,3 +102,4 @@ export default function NavbarGeneral({onOpenLogin}) {
     </nav>
   );
 }
+
