@@ -1,77 +1,109 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bulma/css/bulma.min.css';
 import NavbarGeneral from '../Navbar/NavbarGeneral';
 import Footer from '../Home/Footer/Footer';
 import './Recetas.css';
-
-const importarImagenes = (contexto) => {
-  const imagenes = {};
-  contexto.keys().forEach((nombre) => {
-    const key = nombre.replace('./', '').replace(/\.(png|jpe?g|svg)$/, '');
-    imagenes[key] = contexto(nombre);
-  });
-  return imagenes;
-};
-
-const imagenes = importarImagenes(require.context('./Imgrecetas', false, /\.(png|jpe?g|svg)$/));
-
-
-// Recetas
-const recetasTop = [
-  { titulo: 'Carne Asada al estilo mexicano', descripcion: 'Jugosa carne de res marinada con limón, ajo y especias, asada a la parrilla para resaltar su sabor', imagen: imagenes['receta1'] },
-  { titulo: 'Estofado de Res', descripcion: 'Trozos de carne tierna cocidos lentamente con verduras, ideal para un almuerzo casero y reconfortante.', imagen: imagenes['receta2'] },
-  { titulo: 'Lasaña de Carne', descripcion: 'Capas de pasta, carne molida y salsa bechamel horneadas hasta dorar, un clásico de la cocina italiana.', imagen: imagenes['receta3'] },
-  { titulo: 'Tacos de Res al Pastor', descripcion: 'Carne de res marinada con achiote y piña, cocida al sartén y servida en tortillas para un toque callejero.', imagen: imagenes['receta4'] },
-  { titulo: 'Costillas BBQ al horno', descripcion: 'Costillas suaves y jugosas, bañadas en salsa barbacoa y horneadas hasta quedar caramelizadas.', imagen: imagenes['receta5'] },
-  { titulo: 'Cerdo en Salsa de Tamarindo', descripcion: 'Trozos de cerdo salteados y cubiertos con una salsa agridulce de tamarindo, ideal con arroz blanco.', imagen: imagenes['receta6'] },
-  { titulo: 'Chuletas de cerdo empanizadas', descripcion: 'Chuletas crujientes por fuera y jugosas por dentro, empanizadas y doradas en sartén.', imagen: imagenes['receta7'] },
-  { titulo: 'Arroz Frito con Cerdo (estilo oriental)', descripcion: 'Un salteado rápido de arroz con cerdo, huevo y vegetales al estilo asiático, perfecto como plato único.', imagen: imagenes['receta8'] },
-  { titulo: 'Ceviche de Pescado Blanco', descripcion: 'Pescado fresco "cocido" en jugo de limón, mezclado con cebolla, cilantro y ají para un sabor vibrante.', imagen: imagenes['receta9'] },
-  { titulo: 'Filete de Pescado Empanizado', descripcion: 'Filetes dorados y crujientes, ideales para acompañar con ensalada o papas.', imagen: imagenes['receta10'] },
-];
+import { fetchRecipes } from '../../API/recipes';
+import bannerImg from './Imgrecetas/banner.jpg';
 
 const RecetasPage = () => {
+  const [recetas, setRecetas] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    let mounted = true;
+    (async () => {
+      try {
+        const data = await fetchRecipes(); 
+        if (mounted) setRecetas(Array.isArray(data) ? data : []);
+      } catch (e) {
+        setError('No se pudieron cargar las recetas. Verifica que el servidor esté activo.');
+      } finally {
+        if (mounted) setLoading(false);
+      }
+    })();
+    return () => { mounted = false; };
+  }, []);
+
   return (
     <div>
       <NavbarGeneral />
 
       <section
         className="hero is-primary is-medium hero-banner"
-        style={{
-          backgroundImage: `url(${imagenes['banner']})`, 
-        }}
-      >
-      </section>
+        style={{ backgroundImage: `url(${bannerImg})` }}
+      />
 
-<section className="section">
-  <h2 className="title is-4 has-text-centered">Top 10 Recetas</h2>
-  <div className="columns is-multiline">
-    {recetasTop.map((receta, index) => (
-      <div key={index} className="column is-one-third">
-        <div className="flip-card mx-auto"> {/* centramos con margen automático */}
-          <div className="flip-card-inner">
-            {/* Lado frontal */}
-            <div className="flip-card-front">
-              <figure className="image is-4by3">
-                <img src={receta.imagen} alt={receta.titulo} />
-              </figure>
-              <p className="title is-5 has-text-centered">{receta.titulo}</p>
-            </div>
+      <section className="section">
+        <h2 className="title is-4 has-text-centered">Recetas Disponibles</h2>
 
-            {/* Lado posterior */}
-            <div className="flip-card-back">
-              <div className="content">
-                <p className="title is-6">{receta.titulo}</p>
-                <p>{receta.descripcion}</p>
+        {loading && (
+          <p className="has-text-centered">Cargando recetas…</p>
+        )}
+
+        {!loading && error && (
+          <p className="has-text-centered has-text-danger">{error}</p>
+        )}
+
+        {!loading && !error && recetas.length === 0 && (
+          <p className="has-text-centered">No hay recetas disponibles.</p>
+        )}
+
+        <div className="columns is-multiline">
+          {recetas.map((receta, index) => (
+            <div key={receta.id || receta._id || index} className="column is-one-third">
+              <div className="flip-card mx-auto">
+                <div className="flip-card-inner">
+                  
+                  {/* Lado frontal */}
+                  <div className="flip-card-front">
+                    <figure className="image is-4by3">
+                      <img
+                        src={receta.image_url || 'https://via.placeholder.com/800x600?text=Receta'}
+                        alt={receta.name}
+                        onError={(e) => { e.currentTarget.src = 'https://via.placeholder.com/800x600?text=Receta'; }}
+                      />
+                    </figure>
+                    <p className="title is-5 has-text-centered">{receta.name}</p>
+                  </div>
+
+                  {/* Lado posterior */}
+                  <div className="flip-card-back">
+                    <div className="content">
+                      <p className="title is-6">{receta.name}</p>
+
+                      {(() => {
+                        const desc = receta.instructions || '';
+                        const partes = desc.split(/\n(?=\d+\))/);
+                        if (partes.length <= 1) return <p style={{ whiteSpace: 'pre-wrap' }}>{desc}</p>;
+
+                        const [intro, ...rest] = partes;
+                        return (
+                          <>
+                            {intro && <p style={{ marginBottom: '0.5rem' }}>{intro}</p>}
+                            <ol style={{ paddingLeft: '1.25rem', margin: 0, textAlign: 'left' }}>
+                              {rest
+                                .join('\n')
+                                .split(/\s(?=\d+\)\s)/)
+                                .map(s => s.replace(/^\d+\)\s*/, ''))
+                                .filter(Boolean)
+                                .map((step, i) => (
+                                  <li key={i} style={{ marginBottom: '.35rem' }}>{step}</li>
+                                ))}
+                            </ol>
+                          </>
+                        );
+                      })()}
+                    </div>
+                  </div>
+
+                </div>
               </div>
             </div>
-          </div>
+          ))}
         </div>
-      </div>
-    ))}
-  </div>
-</section>
-
+      </section>
 
       <Footer />
     </div>
