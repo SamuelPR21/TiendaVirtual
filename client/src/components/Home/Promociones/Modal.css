@@ -1,0 +1,54 @@
+/* ====== Tarjeta del producto ====== */
+.promo-card {
+    border: 1px solid #3a3a3a;
+    border-radius: 10px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #2a2a2a 0%, #1e1e1e 100%);
+    color: #f5f5f5;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    cursor: pointer;
+  }
+  
+  .promo-card:hover {
+    transform: translateY(-6px);
+    border-color: #8b0000;
+    box-shadow: 0 8px 18px rgba(139, 0, 0, 0.4);
+  }
+  
+  .promo-card .title,
+  .promo-card .subtitle {
+    color: #f5f5f5;
+  }
+  
+  /* ====== Modal ====== */
+  .modal-card {
+    background: #1a1a1a;
+    color: #f5f5f5;
+    border: 1px solid #2e2e2e;
+  }
+  
+  .modal-card-head {
+    background: #2b0000;
+    color: #fff;
+  }
+  
+  .modal-card-foot {
+    background: #111;
+    border-top: 1px solid #333;
+  }
+  
+  /* ====== Botón del modal ====== */
+  .button.is-link.is-light {
+    background: #8b0000 !important;
+    color: #fff !important;
+    border: none;
+    border-radius: 8px;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  .button.is-link.is-light:hover {
+    background: #a30d0d !important;
+    transform: translateY(-2px);
+  }
+  
+  
