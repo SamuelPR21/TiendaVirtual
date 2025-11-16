@@ -1,0 +1,128 @@
+.payment-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.65);
+  z-index: 50;
+}
+
+.payment-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 420px;
+  max-width: 95%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  z-index: 51;
+  overflow: hidden;
+}
+
+.payment-header {
+  padding: 0.9rem 1.2rem;
+  background: #8b0000;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.payment-header h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.payment-body {
+  padding: 1rem 1.2rem 1.2rem;
+  color: #111;
+}
+
+/* Texto y labels bien oscuros */
+.payment-body .label,
+.payment-body p,
+.payment-body strong {
+  color: #111;
+}
+
+/* Resumen */
+.payment-summary {
+  background: #f7f7f7;
+  border-radius: 10px;
+  padding: 0.75rem 0.9rem;
+  margin-bottom: 0.9rem;
+}
+
+.payment-summary-title {
+  margin: 0 0 0.2rem 0;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.payment-summary-order,
+.payment-summary-total {
+  margin: 0;
+  font-size: 0.86rem;
+}
+
+/* Inputs claros y legibles */
+.payment-input {
+  background: #ffffff !important;
+  color: #111 !important;
+  border-color: #d0d0d0 !important;
+}
+
+.payment-input::placeholder {
+  color: #999;
+}
+
+.payment-form .field {
+  margin-bottom: 0.8rem;
+}
+
+/* Botón principal */
+.payment-submit-btn {
+  margin-top: 0.4rem;
+  background: #00c299;
+  border-color: #00c299;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 999px;
+}
+
+.payment-submit-btn:hover {
+  background: #00a77f;
+  border-color: #00a77f;
+}
+
+/* === Estilos para pantalla de éxito === */
+
+.payment-body-success {
+  text-align: center;
+}
+
+.payment-success-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  margin: 0 auto 0.75rem auto;
+  background: #00c29922;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00c299;
+  font-size: 1.8rem;
+}
+
+.payment-success-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.payment-success-text {
+  font-size: 0.9rem;
+  color: #444;
+  margin-bottom: 0.9rem;
+}
