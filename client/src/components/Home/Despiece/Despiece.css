@@ -1,0 +1,128 @@
+/* SECCIÓN */
+.despiece-section {
+    padding: 3rem 1rem;
+    background: #0d0d0d;
+    color: white;
+    text-align: center;
+  }
+  
+  .despiece-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #b30000; /* rojo elegante */
+  }
+  
+  .despiece-subtitle {
+    color: #e0e0e0;
+    margin-bottom: 2rem;
+  }
+  
+  /* CARRUSEL */
+  .carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .carousel-card {
+    display: flex;
+    background: #1a1a1a;
+    border-radius: 16px;
+    padding: 1.5rem;
+    width: 850px;
+    max-width: 95%;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+    transition: 0.4s ease;
+  }
+  
+  /* Imagen izquierda */
+  .card-left {
+    width: 50%;
+    cursor: pointer;
+  }
+  
+  .carousel-image {
+    width: 100%;
+    height: 280px;
+    object-fit: contain;
+    border-radius: 12px;
+  }
+  
+  /* Texto derecha */
+  .card-right {
+    width: 50%;
+    padding: 1rem 1.5rem;
+    text-align: left;
+  }
+  
+  .card-right h2 {
+    color: #ff3333;
+    margin-bottom: 0.5rem;
+  }
+  
+  .card-right p {
+    color: #ddd;
+    margin-bottom: 1rem;
+  }
+  
+  .btn-producto {
+    background: #900000;
+    color: white;
+    padding: 0.75rem 1.2rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  .btn-producto:hover {
+    background: #b30000;
+  }
+  
+  /* BOTONES DEL CARRUSEL */
+  .carousel-btn {
+    background: rgba(179, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 0 1rem;
+    transition: 0.3s;
+  }
+  
+  .carousel-btn:hover {
+    background: rgba(255, 0, 0, 0.7);
+  }
+  
+  /* PUNTOS */
+  .carousel-dots {
+    margin-top: 1rem;
+  }
+  
+  .dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 4px;
+    background-color: #660000;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  .dot.active {
+    background-color: #ff1a1a;
+    transform: scale(1.2);
+  }
+  
+  /* MODAL */
+  .modal-img {
+    width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 12px;
+  }
+  

@@ -1,53 +1,113 @@
-/* Efecto sombra en texto */
-.has-text-shadow {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+/* Hace que el fondo realmente esté detrás del contenido */
+.titulo-hero {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Contenedor completo del fondo */
+  .titulo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Lo manda detrás del contenido */
+  }
+  
+  /* La imagen debe llenar el contenedor */
+  .titulo-overlay img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Capa negra con opacidad */
+  .opacity-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1;
+  }
+  
+  .hero-body, .hero-foot {
+    position: relative;
+    z-index: 2;
+  }
+  /* --- Fondo real con imagen (soluciona el problema) --- */
+.titulo-fondo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+
+    background-image: url("../Titulo/background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* Oscurecido */
+    background-color: rgba(0, 0, 0, 0.4);
+    background-blend-mode: darken;
+}
+.titulo-altura {
+    height: 80vh; /* puedes jugar con 60vh, 65vh, etc */
+    min-height: 500px; /* opcional pero recomendable */
 }
 
-/*Opacidad   */
-.has-opacity-40 {
-    opacity: 0.4;
+/* Sube el carrusel en el título */
+.carrusel-cuadrado {
+  margin-top: -150px;  /* Prueba -20px, -30px, -50px según te guste */
+  transform: translateY(-10px);
 }
 
-/* Estilos para el modal */
-.modal-card {
-    max-width: 500px;
-    width: 90%;
+/* Columna derecha: control del carrusel sin romper el layout */
+.carrusel-col {
+  display: flex;
+  justify-content: flex-start; /* lo sube */
+  padding-top: 1rem; /* ajuste suave */
 }
 
-.modal-card-body .field:not(:last-child) {
-    margin-bottom: 1.2rem;
-}
-
-.buttons .button {
-    margin: 2px;
-}
-
-/* Mejora de accesibilidad para botones */
-.button[aria-label="close"]:focus {
-    outline: 2px solid #3273dc;
-}
-
-/* Mejor contraste para texto */
-.has-text-shadow {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-}
-
-/* Centrado de los tabs */
 .hero-foot ul {
-    display: flex;
-    justify-content: center;
-    gap: 18.0rem; /* Espacio entre elementos */
-    list-style: none; /* Elimina los bullets */
-    padding-left: 0; /* Elimina el padding por defecto */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem; /* espacio moderno */
 }
 
-
+/* Estilo moderno para los botones del footer */
 .hero-foot button {
-    background: transparent;
-    border: none;
-    color: inherit;
-    cursor: pointer;
-    padding: 0.5em 1em;
-    font-size: 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;
+  color: #fff;
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
+/* Hover con elegancia */
+.hero-foot button:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
+}
+
+/* Activo */
+.hero-foot li.is-active button {
+  background: rgba(255, 255, 255, 0.55);
+  color: #000;
+}
+
+.promos-login-btn {
+  background-color: #8b0000 !important;
+  color: #fff !important;
+  border-radius: 10px;
+  padding: 0.9rem 1.3rem;
+  font-weight: 600;
+  transition: 0.3s ease;
+}

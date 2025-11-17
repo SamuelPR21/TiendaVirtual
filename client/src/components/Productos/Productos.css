@@ -1,20 +1,48 @@
-.card:hover {
-    transform: scale(1.03);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  }
-  
-  .card-image figure img {
-    transition: transform 0.3s ease;
-  }
-  
-  .card:hover .card-image figure img {
-    transform: scale(1.1);
-  }
+/* Cards */
+.card {
+  background-color: #1a1a1a; /* negro más oscuro */
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-.button:hover{
-    background-color: #007bff;
-    color: white;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
+/* Hover de la card */
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagen dentro de la card */
+.card-image figure img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-image figure img {
+  transform: scale(1.1);
+}
+
+/* Contenido de la card (nombre, precio, botón) */
+.card-content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* los datos suben al principio */
+  min-height: 130px; /* suficiente para que no se salga */
+  box-sizing: border-box; /* evita overflow */
+}
+
+/* Botón */
+.button {
+  margin-top: auto; /* empuja el botón hacia abajo si quieres, opcional */
+}
+
+.button:hover {
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

@@ -2,7 +2,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import "bulma/css/bulma.min.css";
 import { useParams } from "react-router-dom";
-import NavbarGeneral from "../Navbar/NavbarGeneral";
 import Footer from "../Home/Footer/Footer";
 import "./Productos.css";
 import {
@@ -85,7 +84,6 @@ export default function Productos() {
 
   return (
     <div>
-      <NavbarGeneral />
 
       <br />
       <br />

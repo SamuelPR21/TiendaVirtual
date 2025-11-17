@@ -89,8 +89,14 @@ export default function Carrusel() {
           ))}
         </div>
 
-        <button id="glider-prev" className="glider-prev">«</button>
-        <button id="glider-next" className="glider-next">»</button>
+        <button id="glider-prev" className="glider-prev">
+          <span>❮</span>
+        </button>
+
+        <button id="glider-next" className="glider-next">
+          <span>❯</span>
+        </button>
+
         <div id="dots"></div>
       </div>
     </section>

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import portada from "../Titulo/Portada.jpeg";
 import "../Titulo/Titulo.css";
 import { useNavigate } from "react-router-dom";
 import Suscribirse from "../Suscribirse/Suscribirse";
+import Carrusel from "../Carrusel/Carrusel";
 
 export default function Titulo() {
   const navigate = useNavigate();
@@ -44,54 +44,48 @@ export default function Titulo() {
         </div>
       )}
 
-      {/* Importante: usamos is-fullheight-with-navbar para respetar la navbar fija global */}
-      <section className="hero is-fullheight-with-navbar">
-        {/* Fondo con overlay */}
-        <div className="hero-background is-overlay">
-          <img
-            src={portada}
-            alt="Portada"
-            className="image is-fullwidth is-fullheight"
-            style={{ objectFit: "cover", objectPosition: "center" }}
-          />
-          <div className="is-overlay has-background-black has-opacity-40"></div>
-        </div>
+  <section className="hero titulo-hero titulo-altura">
+        <div className="titulo-fondo"></div>
 
-        {/* 🚫 Eliminamos hero-head con su navbar duplicada */}
-
-        {/* Título central */}
         <div className="hero-body">
-          <div className="container has-text-centered">
-            <h1 className="title has-text-white is-size-1 has-text-weight-bold has-text-shadow">
-              Carnicería
-            </h1>
-            <h2 className="subtitle has-text-white is-size-3 has-text-shadow">
-              Calidad y Buen Precio
-            </h2>
-            {/* Si quieres un CTA para abrir el modal de login, puedes dejar este botón */}
-            <button className="button is-primary mt-4" onClick={() => setIsModalOpen(true)}>
-              Regístrate
-            </button>
+          <div className="container">
+            <div className="columns is-vcentered">
+              
+              <div className="column is-6 has-text-white">
+                <h1 className="title is-size-1 has-text-weight-bold has-text-shadow">
+                  Carnicería
+                </h1>
+
+                <h2 className="subtitle is-size-3 has-text-shadow">
+                  Calidad y Buen Precio
+                </h2>
+
+                <button
+              className="button promos-login-btn"
+              onClick={() => setIsModalOpen(true)}
+                >
+                  Inicio de Sesión
+                </button>
+              </div>
+
+              <div className="column is-6 carrusel-col">
+              <div className="carrusel-cuadrado">
+                  <Carrusel />
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
 
-        {/* Tabs inferiores (categorías) */}
         <div className="hero-foot">
           <nav className="tabs is-boxed is-fullwidth">
             <div className="container">
               <ul className="is-flex is-justify-content-center">
-                <li>
-                  <button onClick={() => navigate("/productos/res")}>Res</button>
-                </li>
-                <li>
-                  <button onClick={() => navigate("/productos/cerdo")}>Cerdo</button>
-                </li>
-                <li>
-                  <button onClick={() => navigate("/productos/pollo")}>Pollo</button>
-                </li>
-                <li>
-                  <button onClick={() => navigate("/productos/pescado")}>Pescado</button>
-                </li>
+                <li><button onClick={() => navigate("/productos/res")}>Res</button></li>
+                <li><button onClick={() => navigate("/productos/cerdo")}>Cerdo</button></li>
+                <li><button onClick={() => navigate("/productos/pollo")}>Pollo</button></li>
+                <li><button onClick={() => navigate("/productos/pescado")}>Pescado</button></li>
               </ul>
             </div>
           </nav>
