@@ -2,25 +2,24 @@
 import axios from "axios";
 import { API_ORDERS } from "../utils/constans";
 
-/**
- * Crear un pedido
- * body que espera el back (OrderRequestDTO):
- * {
- *   total_value: number,
- *   status: string,
- *   products: [{ product_id, quantity, value }],
- *   user: { user_id, email, address, phone_Number }
- * }
- */
+// Crear pedido (pago)
 export const createOrder = async (payload) => {
   const { data } = await axios.post(API_ORDERS, payload, {
-    withCredentials: true, // para que viaje la cookie del token
+    withCredentials: true,
     headers: { "Content-Type": "application/json" },
   });
   return data; // OrderResponseDTO
 };
 
-// Obtener pedido por ID
+// Listar pedidos del usuario (customer)
+export const fetchOrdersByUser = async (userId) => {
+  const { data } = await axios.get(`${API_ORDERS}/usuario/${userId}`, {
+    withCredentials: true,
+  });
+  return data;
+};
+
+// Listar pedido individual (si lo necesitas)
 export const fetchOrderById = async (id) => {
   const { data } = await axios.get(`${API_ORDERS}/${id}`, {
     withCredentials: true,
@@ -28,32 +27,29 @@ export const fetchOrderById = async (id) => {
   return data;
 };
 
-// Listar pedidos de un usuario
-export const fetchOrdersByUser = async (userId) => {
-  const { data } = await axios.get(`${API_ORDERS}/usuario/${userId}`, {
-    withCredentials: true,
-  });
-  return data; // array de OrderResponseDTO
-};
-
-// Listar pedidos por rango de fechas (para admin/reportes)
-export const fetchOrdersByDateRange = async (startDate, endDate) => {
+// Listar pedidos por rango de fecha (si lo usas)
+export const fetchOrdersByDateRange = async (start, end) => {
   const { data } = await axios.get(
-    `${API_ORDERS}?startDate=${startDate}&endDate=${endDate}`,
+    `${API_ORDERS}?startDate=${start}&endDate=${end}`,
     { withCredentials: true }
   );
   return data;
 };
 
-// Actualizar estado de pedido (admin)
+// Actualizar estado del pedido (admin)
 export const updateOrderStatus = async (id, status) => {
   const { data } = await axios.patch(
     `${API_ORDERS}/${id}`,
     { status },
-    {
-      withCredentials: true,
-      headers: { "Content-Type": "application/json" },
-    }
+    { withCredentials: true }
   );
   return data;
+};
+
+// ✅ Listar todos los pedidos (ADMIN)
+export const fetchAllOrders = async () => {
+  const { data } = await axios.get(`${API_ORDERS}/all`, {
+    withCredentials: true,
+  });
+  return data; // array de OrderResponseDTO
 };

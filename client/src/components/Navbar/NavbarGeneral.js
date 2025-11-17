@@ -16,6 +16,8 @@ export default function NavbarGeneral({ onOpenLogin }) {
 
   if (loading) return null;
 
+  const isAdmin = user?.role === "admin";
+
   return (
     <>
       <nav className="navbar is-fixed-top is-transparent" role="navigation">
@@ -74,7 +76,17 @@ export default function NavbarGeneral({ onOpenLogin }) {
                 Puntos de Venta
               </button>
 
-              {/* Regístrate / Logout al lado de Puntos de Venta */}
+              {/* Customer: enlace directo a Perfil */}
+              {user && !isAdmin && (
+                <button
+                  className="navbar-item"
+                  onClick={() => navigate("/perfil")}
+                >
+                  Perfil
+                </button>
+              )}
+
+              {/* Regístrate / Logout (mismos para ambos roles) */}
               {!user ? (
                 <button
                   className="navbar-item"
@@ -88,8 +100,8 @@ export default function NavbarGeneral({ onOpenLogin }) {
                 </div>
               )}
 
-              {/* Administración solo para admin */}
-              {user?.role === "admin" && (
+              {/* Administración solo admin (con Perfil dentro) */}
+              {isAdmin && (
                 <div className="navbar-item has-dropdown is-hoverable">
                   <button className="navbar-link">Administración</button>
                   <div className="navbar-dropdown">
@@ -105,12 +117,19 @@ export default function NavbarGeneral({ onOpenLogin }) {
                     >
                       Agregar Receta
                     </button>
+                    <hr className="navbar-divider" />
+                    <button
+                      className="navbar-item"
+                      onClick={() => navigate("/perfil")}
+                    >
+                      Perfil
+                    </button>
                   </div>
                 </div>
               )}
             </div>
 
-            {/* 🔹 Esquina derecha: carrito */}
+            {/* Esquina derecha: carrito */}
             <div className="navbar-end">
               <div className="navbar-item">
                 <button
@@ -133,7 +152,10 @@ export default function NavbarGeneral({ onOpenLogin }) {
       </nav>
 
       {/* Drawer del carrito */}
-      <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+      <CartDrawer
+        isOpen={isCartOpen}
+        onClose={() => setIsCartOpen(false)}
+      />
     </>
   );
 }

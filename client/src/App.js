@@ -14,6 +14,7 @@ import AgregarProducto from './components/Admin/AgregarProducto';
 import AgregarReceta from './components/Admin/AgregarReceta';
 import './App.css';
 import CartPage from "./components/Cart/CartPage";
+import ProfilePage from "./components/Profile/ProfilePage";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,6 +34,7 @@ function App() {
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/PuntosVenta" element={<PuntosVenta />} />
           <Route path="/carrito" element={<CartPage />} />
+          <Route path="/perfil" element={<ProfilePage />} />
            <Route
             path="/admin/agregar-producto"
             element={

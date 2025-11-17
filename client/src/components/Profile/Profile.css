@@ -1,0 +1,207 @@
+/* ===== CONTENEDOR GENERAL ===== */
+
+.profile-page {
+  padding: 2rem 1.5rem 3rem;
+  color: #f5f5f5;
+}
+
+.profile-page-header {
+  display: flex;
+  justify-content: center;      /* centrado horizontal */
+  align-items: center;
+  text-align: center;           /* texto centrado */
+  margin-bottom: 1.5rem;
+}
+
+
+.profile-page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.profile-page-subtitle {
+  font-size: 0.95rem;
+  color: #c4c4c4;
+}
+
+/* ===== LAYOUT PRINCIPAL ===== */
+
+.profile-layout {
+  display: flex;
+  gap: 2rem;
+}
+
+/* ===== SIDEBAR ===== */
+
+.profile-sidebar {
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.profile-card {
+  border-radius: 16px;
+  background: radial-gradient(circle at top left, #1f1f1f, #0d0d0d);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+}
+
+/* Card usuario */
+
+.profile-card-main .card-content {
+  padding: 1.7rem 1.6rem;
+}
+
+.profile-greeting {
+  font-size: 0.9rem;
+  color: #e0e0e0;
+  opacity: 0.85;
+  margin-bottom: 0.2rem;
+}
+
+.profile-name {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 0.25rem;
+}
+
+.profile-email {
+  font-size: 0.9rem;
+  color: #b0b0b0;
+  margin-bottom: 0.9rem;
+}
+
+.profile-role-tag {
+  display: inline-block;
+  padding: 0.25rem 0.8rem;
+  border-radius: 999px;
+  background: #ffe0ec;
+  color: #c2185b;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Card resumen */
+
+.profile-card-summary .card-content {
+  padding: 1.4rem 1.3rem 1.6rem;
+}
+
+.profile-summary-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.profile-metrics-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.profile-metric-card {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.metric-label {
+  font-size: 0.85rem;
+  color: #d0d0d0;
+}
+
+.metric-value {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* ===== MAIN PANEL ===== */
+
+.profile-main {
+  flex: 1;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #1b1d22, #15171b);
+  padding: 1.6rem 1.5rem 2rem;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Secciones dentro del panel */
+
+.profile-section {
+  margin-bottom: 1.6rem;
+}
+
+.profile-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.7rem;
+}
+
+.profile-section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.profile-reset-orders-btn {
+  border-radius: 999px;
+}
+
+/* Card que envuelve las tablas */
+
+.profile-table-card {
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 0.75rem 0.75rem 0.5rem;
+}
+
+/* Tablas */
+
+.profile-table-container {
+  max-height: 340px;
+  overflow-y: auto;
+}
+
+.profile-table {
+  font-size: 0.9rem;
+  margin-bottom: 0 !important;
+}
+
+.profile-table thead th {
+  background: #111319;
+  color: #f5f5f5;
+  border-color: #1f222b;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* Filas menos "blancas" */
+.profile-table tbody tr {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.profile-table tbody tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.profile-table tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+.profile-table td,
+.profile-table th {
+  color: #f3f3f3;
+  border-color: #1f222b;
+}
+
+/* Centrado de mensajes vacíos */
+.profile-table tbody td.has-text-centered {
+  color: #c0c0c0;
+}
