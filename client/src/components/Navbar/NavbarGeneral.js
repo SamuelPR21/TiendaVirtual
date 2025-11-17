@@ -89,7 +89,7 @@ export default function NavbarGeneral({ onOpenLogin }) {
                     <span className="icon">
                       <i className="fas fa-user"></i>
                     </span>
-                    <span>Regístrate</span>
+                    <span>Iniciar Sesion</span>
                   </button>
                 </div>
               </div>

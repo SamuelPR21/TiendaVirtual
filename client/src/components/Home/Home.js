@@ -1,21 +1,35 @@
 import React from "react";
-import Titulo from "./Titulo/Titulo"
-import Carrusel from "../Home/Carrusel/Carrusel";
+import Titulo from "./Titulo/Titulo";
 import Promociones from "../Home/Promociones/Promociones";
-import Footer from "../Home/Footer/Footer"; 
-//import FloatingCart from "../Home/Carrito/FloatingCart";
 import Despiece from "../Home/Despiece/Despiece";
-import './Home.css';
+import Footer from "../Home/Footer/Footer";
+import RegisterComponent from "./Suscribirse/RegisterHome";
+import "./Home.css";
 
 export default function Home() {
-    return(
-        <main className="home-container">
-            {/* <FloatingCart/> */}
-            <Titulo/>
-            <Carrusel/>
-            <Promociones/>
-            <Despiece/>
-            <Footer/>
-        </main>
-    )
+  return (
+    <main className="home-layout">
+
+      <section className="home-section">
+        <Titulo />
+      </section>
+
+      <section className="home-section section-promos">
+        <Promociones />
+      </section>
+
+      <section className="home-section section-despiece">
+        <Despiece />
+      </section>
+
+        <section className="home-section section-despiece" id="register-section">
+            <RegisterComponent id="register-section" />
+        </section>
+
+      <section className="home-footer-wrapper">
+        <Footer />
+      </section>
+
+    </main>
+  );
 }

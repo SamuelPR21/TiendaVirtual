@@ -1,41 +1,45 @@
-
-.hero-body-custom {
-    background-image: url('./Img/Portada.jpeg'); /* Ruta de la imagen */
-    background-size: cover; /* La imagen cubrirá todo el div */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    height: 100%; /* Asegúrate de que el div tenga altura */
-  }
-
+/* Solo para AboutUs */
 .aboutus-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-  
-  /* Espaciado interno del hero-body */
-  .hero-body-custom {
-    padding: 3rem 1.5rem !important;
-  }
-  
-  /* Espacio entre navbar y título */
-  .title-container {
-    margin-top: 40px;
-  }
-  
-  /* Sección de contenido principal */
-  .content-section {
-    flex: 1;
-  }
-  
-  /* Ajustes para el footer */
-  .footer-container {
-    margin-top: auto;
-    width: 100%;
-  }
-  
-  /* Espaciado adicional para el subtítulo */
-  .subtitle-spacing {
-    margin-top: 1rem !important;
-  }
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #0d0d0d; /* negro elegante */
+  color: #fff;
+}
+
+/* Fade-in animación solo para AboutUs */
+.aboutus-container .aboutus-section {
+  opacity: 0;
+  transform: translateY(50px);
+  padding: 5rem 2rem;
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.aboutus-container .fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero específico */
+.aboutus-container .aboutus-hero {
+  background: linear-gradient(180deg, #550000, #000000);
+  text-align: center;
+}
+
+/* VideoSection */
+.aboutus-container .aboutus-video video.aboutus-video-content {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+/* TeamSection botones */
+.aboutus-container .aboutus-team .aboutus-button {
+  background-color: #900000;
+  color: #fff;
+  border: none;
+}
+
+.aboutus-container .aboutus-team .aboutus-button:hover {
+  background-color: #b20000;
+}

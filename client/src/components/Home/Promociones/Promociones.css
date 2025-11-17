@@ -1,68 +1,91 @@
-/* ====== Sección Principal ====== */
-.promociones-section {
-  background: linear-gradient(180deg, #1a1a1a 0%, #2b0000 100%);
-  color: #f5f5f5;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+/* === WRAPPER GENERAL === */
+.promos-wrapper {
+  position: relative;
+  height: 70vh;
+  max-height: 650px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.promociones-hero {
-  background: linear-gradient(90deg, #8b0000, #3c0000);
-  border-radius: 8px;
-  padding: 2rem 1rem;
-  margin-bottom: 2.5rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+/* === Fondo carrusel === */
+.promos-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
 }
 
-.promociones-hero .title {
-  color: #ffffff;
+.promos-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.35);
+  transition: opacity 0.8s ease;
 }
 
-.promociones-hero .subtitle {
-  color: #e0e0e0;
+.promos-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 0, 0, 0.45);
+  backdrop-filter: blur(2px);
 }
 
-/* ====== Contenedor de promociones ====== */
-.promo-scroll-container {
-  max-height: 70vh;
+/* === Contenido centrado === */
+.promos-content {
+  position: relative;
+  z-index: 2;
+  max-width: 60%;
+  text-align: center;
+}
+
+/* === Encabezado === */
+.promos-header {
+  margin-bottom: 2rem;
+}
+
+.promos-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(100, 0, 0, 0.8);
+}
+
+.promos-subtitle {
+  font-size: 1.3rem;
+  color: #cccccc;
+  margin-bottom: 1.5rem;
+}
+
+/* === Botón === */
+.promos-login-btn {
+  background-color: #8b0000 !important;
+  color: #fff !important;
+  border-radius: 10px;
+  padding: 0.9rem 1.3rem;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.promos-login-btn:hover {
+  background-color: #a30000 !important;
+  transform: translateY(-3px);
+}
+
+/* === Cards de promociones cuando loguea === */
+.promos-columns {
+  margin-top: 3rem;
+  max-height: 60vh;
   overflow-y: auto;
-  padding: 1.5rem;
-  background: #111111;
-  border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
-  border: 1px solid #2e2e2e;
 }
 
-.promo-scroll-container::-webkit-scrollbar {
+.promos-columns::-webkit-scrollbar {
   width: 10px;
 }
-.promo-scroll-container::-webkit-scrollbar-thumb {
-  background-color: #8b0000;
-  border-radius: 5px;
+.promos-columns::-webkit-scrollbar-thumb {
+  background: #8b0000;
+  border-radius: 6px;
 }
-.promo-scroll-container::-webkit-scrollbar-track {
-  background-color: #2b2b2b;
-}
-
-/* ====== Mensaje de login ====== */
-.promociones-login-box {
-  background: #1b1b1b;
-  border-radius: 10px;
-  color: #fff;
-  padding: 2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-/* ====== Botón principal ====== */
-.button.is-primary {
-  background-color: #8b0000 !important;
-  border-color: #8b0000 !important;
-  color: #fff !important;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-}
-
-.button.is-primary:hover {
-  background-color: #a60d0d !important;
-  transform: translateY(-2px);
+.promos-columns::-webkit-scrollbar-track {
+  background: #1a1a1a;
 }

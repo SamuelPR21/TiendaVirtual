@@ -1,68 +1,111 @@
-.section {
-  padding: 2rem 0;
-  position: relative;
-  min-height: auto;
-  overflow: visible; /* Cambiado a altura automática */
-}
+/* Contenedor general */
 .glider-container {
-  max-width: 320px;
-  margin: 0.5rem auto; /* Añade margen vertical */
-  height: 400px;
+  max-width: 380px;         /* Más grande */
+  height: 60vh;       /* 60% de la pantalla, flexible */
+  max-height: 520px;   margin: 1.5rem auto;
+  position: relative;
+
+  /* Efecto tarjeta moderna */
+  padding: 1rem;
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
 }
 
+/* Slide */
 .card {
   height: 100%;
-  padding: 0 10px;
+  padding: 0;
 }
 
 .card-image {
-  max-height: 400px
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
+/* Mantiene 9:16 pero se adapta */
 .image.is-9by16 {
-  padding-top: 177.78%; /* Relación 9:16 (9/16*100) */
-  height: 0;
+  padding-top: 0;
+  height: 100%;
 }
 
 video {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 20px;
 
+  transition: transform 0.4s ease;
 }
 
-/* Botones de navegación */
-.glider-prev, .glider-next {
+video:hover {
+  transform: scale(1.03);
+}
+
+/* --- Flechas modernas --- */
+.glider-prev,
+.glider-next {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 2;
-  background: rgba(255,255,255,0.5);
+  z-index: 10;
+
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
   border: none;
-  padding: 10px;
+
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(8px);
+
   cursor: pointer;
+  font-size: 1.5rem;
+  color: #fff;
+
+  transition: background 0.25s, transform 0.25s;
 }
 
-.glider-prev { left: 10px; }
-.glider-next { right: 10px; }
+.glider-prev:hover,
+.glider-next:hover {
+  background: rgba(255, 255, 255, 0.55);
+  transform: translateY(-50%) scale(1.1);
+}
 
-/* Puntos de navegación */
+.glider-prev { left: -18px; }
+.glider-next { right: -18px; }
+
+/* --- Puntos --- */
 #dots {
   text-align: center;
   margin-top: 15px;
-  position: relative; /* Asegurar posición */
-  z-index: 1;
 }
 
+#dots .glider-dot {
+  width: 10px !important;
+  height: 10px !important;
+  background: rgba(255,255,255,0.6);
+  border-radius: 50%;
+  margin: 0 4px;
+}
+
+#dots .glider-dot.active {
+  background: #fff;
+}
+
+/* --- Adaptado para móviles --- */
 @media (max-width: 768px) {
   .glider-container {
-    height: 350px;
-    max-width: 280px;
+    max-width: 300px;
+    height: 420px;
+    padding: 0.7rem;
   }
-  .card-image {
-    max-height: 350px;
-  }
+  .glider-prev { left: -10px; }
+  .glider-next { right: -10px; }
 }
