@@ -74,3 +74,10 @@ export const logout = async () => {
     throw error;
   }
 }
+
+export const fetchAllUsers = async () => {
+  const { data } = await axios.get(`${API_USER}/obtenerUsers`, {
+    withCredentials: true,
+  });
+  return data; // array de usuarios
+};

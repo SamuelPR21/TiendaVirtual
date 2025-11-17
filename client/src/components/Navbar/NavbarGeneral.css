@@ -36,6 +36,29 @@
     transform: scale(1.1);
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
   }
+
+  .cart-button {
+  position: relative;
+}
+
+.cart-badge {
+  margin-left: 0.25rem;
+  font-size: 0.7rem;
+}
+
+.cart-icon-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.cart-icon-badge {
+  margin-left: 0.25rem;
+  font-size: 0.7rem;
+}
+
+
   
   /* Responsive tweaks */
   @media (max-width: 768px) {

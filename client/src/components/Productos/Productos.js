@@ -1,3 +1,4 @@
+// src/components/Productos/Productos.js
 import React, { useEffect, useMemo, useState } from "react";
 import "bulma/css/bulma.min.css";
 import { useParams } from "react-router-dom";
@@ -7,13 +8,16 @@ import {
   fetchProducts,
   fetchProductsByAnimal,
 } from "../../API/products";
+import { useCart } from "../../context/CartContext";   // 👈 nuevo
 
 export default function Productos() {
   const { categoria } = useParams();
 
-  const [items, setItems] = useState([]);    
+  const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const { addToCart } = useCart();                     // 👈 nuevo
 
   const categoriaNormalizada = useMemo(
     () => (categoria || "").toLowerCase(),
@@ -35,7 +39,7 @@ export default function Productos() {
 
         const data = categoriaValida
           ? await fetchProductsByAnimal(categoriaNormalizada)
-          : await fetchProducts(); 
+          : await fetchProducts();
 
         if (!ignore) setItems(data || []);
       } catch (err) {
@@ -72,7 +76,10 @@ export default function Productos() {
   };
 
   const titulo = categoriaValida
-    ? `Productos de ${categoriaNormalizada.charAt(0).toUpperCase() + categoriaNormalizada.slice(1)}`
+    ? `Productos de ${
+        categoriaNormalizada.charAt(0).toUpperCase() +
+        categoriaNormalizada.slice(1)
+      }`
     : "Todos los productos";
 
   return (
@@ -98,9 +105,9 @@ export default function Productos() {
               {items.map((p) => {
                 const id = p.id || p._id;
                 const nombre = p.name;
-                const precio = p.price_lb; 
+                const precio = p.price_lb;
                 const descripcion = p.description;
-                const img = p.image_url || ""; 
+                const img = p.image_url || "";
 
                 return (
                   <div className="column is-one-third" key={id}>
@@ -109,7 +116,13 @@ export default function Productos() {
                         className="card-image"
                         style={{ cursor: "pointer" }}
                         onClick={() =>
-                          abrirModal({ id, nombre, precio, descripcion, imagen: img })
+                          abrirModal({
+                            id,
+                            nombre,
+                            precio,
+                            descripcion,
+                            imagen: img,
+                          })
                         }
                       >
                         <figure className="image is-4by3">
@@ -130,13 +143,22 @@ export default function Productos() {
                           className="title is-5"
                           style={{ cursor: "pointer" }}
                           onClick={() =>
-                            abrirModal({ id, nombre, precio, descripcion, imagen: img })
+                            abrirModal({
+                              id,
+                              nombre,
+                              precio,
+                              descripcion,
+                              imagen: img,
+                            })
                           }
                         >
                           {nombre}
                         </p>
                         <p className="subtitle is-6">$ {precio} /Lb</p>
-                        <button className="button is-primary">
+                        <button
+                          className="button is-primary"
+                          onClick={() => addToCart(p, 1)}   // 👈 aquí se agrega al carrito
+                        >
                           Añadir al carrito
                         </button>
                       </div>
@@ -186,6 +208,17 @@ export default function Productos() {
               <button
                 className="button is-primary is-fullwidth mt-3"
                 onClick={() => {
+                  // construyo un objeto compatible con el carrito
+                  addToCart(
+                    {
+                      _id: productoSeleccionado.id,
+                      name: productoSeleccionado.nombre,
+                      price_lb: productoSeleccionado.precio,
+                      description: productoSeleccionado.descripcion,
+                      image_url: productoSeleccionado.imagen,
+                    },
+                    1
+                  );
                   cerrarModal();
                 }}
               >
