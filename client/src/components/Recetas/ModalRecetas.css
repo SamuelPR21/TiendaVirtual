@@ -1,0 +1,85 @@
+/* Fondo oscuro translúcido */
+.modalR-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(3px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+  }
+  
+  /* Caja principal */
+  .modalR-container {
+    background: #111;
+    color: #fff;
+    width: 90%;
+    max-width: 650px;
+    border-radius: 14px;
+    box-shadow: 0 0 18px rgba(139, 0, 0, 0.65);
+    padding: 1.5rem;
+    position: relative;
+    animation: modalFade 0.25s ease-out;
+  }
+  
+  @keyframes modalFade {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Botón cerrar */
+  .modalR-close {
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    background: #7b001c;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  
+  .modalR-close:hover {
+    background: #a3002d;
+  }
+  
+  /* Imagen */
+  .modalR-img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    border: 2px solid #7b001c;
+  }
+  
+  /* Título */
+  .modalR-title {
+    font-size: 1.6rem;
+    color: #e60026;
+    font-weight: bold;
+    margin-bottom: .8rem;
+  }
+  
+  /* Descripción / instrucciones */
+  .modalR-intro {
+    white-space: pre-wrap;
+    margin-bottom: .8rem;
+    color: #ccc;
+  }
+  
+  .modalR-list {
+    padding-left: 1.3rem;
+  }
+  
+  .modalR-list li {
+    margin-bottom: .45rem;
+    line-height: 1.4;
+    color: #eee;
+  }
+  
