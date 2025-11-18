@@ -68,7 +68,7 @@
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  background-color: #fff;
+  background-color: #050505;
   overflow: hidden;
   color: black;
   font-size: 1rem;
@@ -102,11 +102,11 @@
   width: 6px;
 }
 .flip-card-back .content::-webkit-scrollbar-thumb {
-  background: #ccc;
+  background: #000000;
   border-radius: 3px;
 }
 .flip-card-back .content::-webkit-scrollbar-thumb:hover {
-  background: #aaa;
+  background: #0f0f0f;
 }
 
 /* Responsivo */
@@ -126,4 +126,60 @@
   height: auto;
   aspect-ratio: 16 / 9;
   padding: 2rem 0;
+}
+
+/* Reducimos banner */
+.hero-banner {
+  height: 40vh !important;
+  background-size: cover !important;
+}
+
+/* Premium styles */
+.receta-img-container img {
+  filter: brightness(0.85);
+}
+
+.receta-title {
+  background: rgba(0, 0, 0, 0.55);
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  color: #e60026 !important;
+  font-weight: bold;
+}
+
+/* Efecto premium borde vino */
+.flip-card-front,
+.flip-card-back {
+  border: 1px solid #7b001c !important;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* Cursor pointer */
+.flip-card-front {
+  cursor: pointer;
+}
+
+.flip-card-back .button:hover {
+  transform: scale(1.07);
+  transition: 0.2s ease-in-out;
+  background-color: #A3002E !important;
+}
+
+.video-banner {
+  position: relative;
+  height: 80vh; /* Ajusta entre 65vh – 80vh según tu gusto */
+  overflow: hidden;
+  padding: 0 !important; /* Evita padding que viene del hero */
+  margin: 0;
+  background: #000 !important;
+}
+
+.video-background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%); /* Centrado perfecto */
 }

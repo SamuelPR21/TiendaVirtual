@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import 'bulma/css/bulma.min.css';
 import Footer from '../Home/Footer/Footer';
 import './Recetas.css';
 import { fetchRecipes } from '../../API/recipes';
-import bannerImg from './Imgrecetas/banner.jpg';
 import { useUser } from '../../context/UserContext';
 import Suscribirse from "../Home/Suscribirse/Suscribirse"
+import ModalReceta from './ModalRecetas';
+import recetasVideo from './Assets/recetasVideo.mp4';
 
 const RecetasPage = () => {
   const [recetas, setRecetas] = useState([]);
@@ -13,6 +13,9 @@ const RecetasPage = () => {
   const [error, setError] = useState('');
   const { user } = useUser();
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [selectedReceta, setSelectedReceta] = useState(null);
+  const [openModal, setOpenModal] = useState(false);
+
 
   useEffect(() => {
     if (!user) {
@@ -37,18 +40,21 @@ const RecetasPage = () => {
 
    return (
     <div>
-
-      {/* Banner */}
-      <section
-        className="hero is-primary is-medium hero-banner"
-        style={{ backgroundImage: `url(${bannerImg})` }}
-      />
+      <section className="hero is-primary hero-banner video-banner">
+        <video
+          src={recetasVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="video-background"
+        />
+      </section>
 
       <section className="section">
 
         <h2 className="title is-4 has-text-centered">Recetas Disponibles</h2>
 
-        {/* 🔥 SI EL USUARIO NO ESTÁ AUTENTICADO */}
         {!user && (
           <div className="has-text-centered" style={{ marginTop: '2rem' }}>
             <p
@@ -79,8 +85,6 @@ const RecetasPage = () => {
             )}
           </div>
         )}
-
-        {/* 🔥 Si NO hay usuario, dejamos de renderizar recetas */}
         {!user && <Footer />}
         {!user && <></>}
         {!user && null}
@@ -92,7 +96,6 @@ const RecetasPage = () => {
 
         { !user && null }
 
-        {/* 🔥 Cortamos el render aquí */}
         {!user && <></>}
         {!user && <></>}
         {!user && null}
@@ -120,49 +123,47 @@ const RecetasPage = () => {
                 <div key={receta.id || receta._id || index} className="column is-one-third">
                   <div className="flip-card mx-auto">
                     <div className="flip-card-inner">
-
                       <div className="flip-card-front">
-                        <figure className="image is-4by3">
+                        <figure className="image is-4by3 receta-img-container">
                           <img
                             src={receta.image_url || 'https://via.placeholder.com/800x600?text=Receta'}
                             alt={receta.name}
                             onError={(e) => { e.currentTarget.src = 'https://via.placeholder.com/800x600?text=Receta'; }}
                           />
                         </figure>
-                        <p className="title is-5 has-text-centered">{receta.name}</p>
+                        <p className="title is-5 has-text-centered receta-title">{receta.name}</p>
                       </div>
-
-                      <div className="flip-card-back">
-                        <div className="content">
-                          <p className="title is-6">{receta.name}</p>
-
-                          {(() => {
-                            const desc = receta.instructions || '';
-                            const partes = desc.split(/\n(?=\d+\))/);
-                            if (partes.length <= 1) return <p style={{ whiteSpace: 'pre-wrap' }}>{desc}</p>;
-
-                            const [intro, ...rest] = partes;
-                            return (
-                              <>
-                                {intro && <p style={{ marginBottom: '0.5rem' }}>{intro}</p>}
-                                <ol style={{ paddingLeft: '1.25rem', margin: 0, textAlign: 'left' }}>
-                                  {rest
-                                    .join('\n')
-                                    .split(/\s(?=\d+\)\s)/)
-                                    .map(s => s.replace(/^\d+\)\s*/, ''))
-                                    .filter(Boolean)
-                                    .map((step, i) => (
-                                      <li key={i} style={{ marginBottom: '.35rem' }}>{step}</li>
-                                    ))}
-                                </ol>
-                              </>
-                            );
-                          })()}
-
-                        </div>
+                      <div
+                        className="flip-card-back"
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          padding: "1rem"
+                        }}
+                      >
+                        <button
+                          className="button"
+                          style={{
+                            backgroundColor: "#7B001C",
+                            color: "white",
+                            borderRadius: "8px",
+                            padding: "0.75rem 1.5rem",
+                            fontWeight: "600",
+                            border: "none",
+                            cursor: "pointer",
+                          }}
+                          onClick={() => {
+                            setSelectedReceta(receta);
+                            setOpenModal(true);
+                          }}
+                        >
+                          Ver más
+                        </button>
                       </div>
 
                     </div>
+
                   </div>
                 </div>
               ))}
@@ -170,8 +171,13 @@ const RecetasPage = () => {
           </>
         )}
       </section>
+      {openModal && (
+        <ModalReceta
+          receta={selectedReceta}
+          onClose={() => setOpenModal(false)}
+        />
+      )}
 
-      <Footer />
     </div>
   );
 };
