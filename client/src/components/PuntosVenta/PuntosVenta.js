@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
-import NavbarGeneral from '../Navbar/NavbarGeneral';
 import Footer from '../Home/Footer/Footer';
 import './PuntosVenta.css';
 
@@ -76,7 +75,6 @@ function PuntosVenta() {
 
   return (
     <div className="main-container">
-      <NavbarGeneral />
     <br/>
     <br/>
     <br/>

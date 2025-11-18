@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import "./Modal.css";
+import { useCart } from "../../../context/CartContext";   
+
 
 export default function Modal({
+  id,
   imagen,
   titulo,
   descripcion,
@@ -12,6 +15,7 @@ export default function Modal({
   fin,
 }) {
   const [mostrar, setMostrar] = useState(false);
+  const { addToCart } = useCart();                     
 
   return (
     <>
@@ -59,7 +63,20 @@ export default function Modal({
           </section>
 
           <footer className="modal-card-foot">
-            <button className="button add-cart-btn">Añadir al carrito</button>
+            <button 
+              onClick={() => addToCart(
+                {
+                  _id: id,
+                  name: titulo,
+                  price: precioFinal.replace(),
+                  descripcion: descripcion,
+                  image_url: imagen,
+                },
+                1
+              )}
+              className="button add-cart-btn">
+                Añadir al carrito
+              </button>
           </footer>
         </div>
       </div>

@@ -1,6 +1,4 @@
-// src/components/Productos/Productos.js
 import React, { useEffect, useMemo, useState } from "react";
-import "bulma/css/bulma.min.css";
 import { useParams } from "react-router-dom";
 import Footer from "../Home/Footer/Footer";
 import "./Productos.css";
@@ -8,7 +6,7 @@ import {
   fetchProducts,
   fetchProductsByAnimal,
 } from "../../API/products";
-import { useCart } from "../../context/CartContext";   // 👈 nuevo
+import { useCart } from "../../context/CartContext";   
 
 export default function Productos() {
   const { categoria } = useParams();
@@ -17,7 +15,7 @@ export default function Productos() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const { addToCart } = useCart();                     // 👈 nuevo
+  const { addToCart } = useCart();                     
 
   const categoriaNormalizada = useMemo(
     () => (categoria || "").toLowerCase(),
